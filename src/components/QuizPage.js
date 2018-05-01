@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {fetchQuestions} from '../actions/questions'
-import {Link} from 'react-router-dom'
-import {quizQuestionsArray} from '../dummydata/questions'
+import {fetchQuestions, updateScore} from '../actions/questions'
 
 class QuizPage extends PureComponent {
     state = {}
@@ -11,49 +9,52 @@ class QuizPage extends PureComponent {
     this.props.fetchQuestions()
     }
 
+    updateScore = () => {
+        this.props.updateScore()
+    }
 
-    handleChange = (e) => {
-        this.setState({name: e.target.name, price: e.target.value})
+    handleChange = (question, e) => {
+        this.setState({choice: e.target.value, answer: question.answer})
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
         // this.props.onSubmit(this.state)
-        console.log('You have selected:', this.state.name + this.state.price);
+        console.log('You have selected: ' + this.state.choice + '. The correct answer was: ' + this.state.answer);
+        if (this.state.choice == this.state.answer) this.updateScore()
     }
 
+    render() {
+        const {questions} = this.props
 
-  render() {
-    const {questions} = this.props
+        return (
+          <div>
+            <h1>Quiz #1</h1>
+                { questions.map(question => (
+                    <form key={question.id} onSubmit = {this.handleSubmit}>
+                        <h3>{question.title}</h3>
 
-    return (
-      <div>
-        <h1>Quiz #1</h1>
-            { quizQuestionsArray.map(question => (
-                <form key={question.id}>
-                    <h3>{question.title}</h3>
+                        <input type="radio" value= '1' onChange={(e) =>this.handleChange(question, e)}/>{question.option1}<br></br>
 
-                    <input type="radio" value= '1'/>{question.option1}<br></br>
+                        <input type="radio" value= '2' onChange={(e) =>this.handleChange(question, e)}/>{question.option2}<br></br>
 
-                    <input type="radio" value= '2'/>{question.option2}<br></br>
+                        <input type="radio" value= '3' onChange={(e) =>this.handleChange(question, e)}/>{question.option3}<br></br>
 
-                    <input type="radio" value= '3'/>{question.option3}<br></br>
+                        <input type="radio" value= '4' onChange={(e) =>this.handleChange(question, e)}/>{question.option4}<br></br>
 
-                    <input type="radio" value= '4'/>{question.option4}<br></br>
+                        <button type="submit">Submit</button>
 
-                    <button type="submit">Submit</button>
-
-                </form> )) }
-                </div>
-    )
-  }
+                    </form> )
+                )}
+            </div>
+        )
+    }
 }
 
 
-const mapStateToProps = function (state) {
-  return {
-    questions: state.questions,
-  }
-}
+const mapStateToProps = (state) => ({
+      questions: state.questions,
+      score: state.score
+    })
 
-export default connect(mapStateToProps, { fetchQuestions })(QuizPage)
+    export default connect(mapStateToProps, {fetchQuestions, updateScore})(QuizPage)

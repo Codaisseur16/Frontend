@@ -4,6 +4,7 @@ import {quizQuestions} from '../dummydata/questions'
 // const baseUrl = 'http://localhost:4001'
 
 export const FETCH_QUESTIONS = 'FETCH_QUESTIONS'
+export const UPDATE_SCORE = 'UPDATE_SCORE'
 
 // export const fetchQuestions = (quizId) => (dispatch) => {
 //     request
@@ -18,4 +19,8 @@ export const FETCH_QUESTIONS = 'FETCH_QUESTIONS'
 export const fetchQuestions = () => ({
   type: FETCH_QUESTIONS,
   payload: quizQuestions.data
+})
+
+export const updateScore = () => ({
+  type: UPDATE_SCORE
 })
