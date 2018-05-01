@@ -1,10 +1,8 @@
 import {FETCH_QUESTIONS} from '../actions/questions'
 
-
-export default (state = null, {type, payload}) => {
+export default (state = [], {type, payload}) => {
   switch (type) {
       case FETCH_QUESTIONS:
-            console.log(payload)
             return payload
 
       default:
