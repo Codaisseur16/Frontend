@@ -7,6 +7,7 @@ import SignupPage from './components/signup/SignupPage'
 import LogoutPage from './components/logout/LogoutPage'
 import QuizPage from './components/QuizPage'
 import QuizzesList from './containers/quizzeslist'
+import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
 
 
@@ -34,12 +35,6 @@ class App extends Component {
 
   }
 }
-    
-    //         <Route exact path="/login" component={LoginPage} />
-    //         <Route exact path="/logout" component={LogoutPage} />
-    //         <Route exact path="/signup" component={SignupPage} />
-    //         <Route exact path="/quizzes" component={Homepage} /> 
-    //         <Route exact path="/quizzes/:id" component={TakeQuiz} />
-    //         <Route exact path="/quizzes/edit/:id" component={Quizdetails} />
+  
 
 export default App;
