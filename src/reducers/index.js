@@ -2,8 +2,10 @@
 
 import questions from './questions'
 import score from './score'
+import currentUser from './currentUser'
 
 export default {
   questions,
-  score
+  score,
+  currentUser
 }

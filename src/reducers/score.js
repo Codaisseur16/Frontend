@@ -1,9 +1,9 @@
-import {UPDATE_SCORE} from '../actions/questions'
+import {SEND_RESPONSE} from '../actions/questions'
 
-export default (state = 0, {type, payload}) => {
+export default (state = {}, {type, payload}) => {
   switch (type) {
-      case UPDATE_SCORE:
-            return state + 1
+      case SEND_RESPONSE:
+            return payload
 
       default:
         return state
