@@ -1,11 +1,11 @@
 //src/containers/QuestionForm.js
 import React, {PureComponent} from 'react'
-// import {updateQuestionCard} from '../actions/QuizzDetails'
+import {updateQuestionCard} from '../actions/QuizzDetails'
 
 //styling
 import Button from 'material-ui/Button'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
-import './QuizzDetails.css'
+// import './QuizzDetails.css'
 
 class QuestionForm extends PureComponent {
 
@@ -13,7 +13,7 @@ class QuestionForm extends PureComponent {
 
 	handleSubmit = (e) => {
         e.preventDefault()
-        this.props.onClick(this.state) 
+        this.props.updateQuestionCard(this.state) 
         // this.props.updateQuestionCard(question.id, this.state) // question id should be generated on post, so add new question  
         console.log(this.state)
 	}

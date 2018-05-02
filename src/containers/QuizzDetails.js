@@ -29,6 +29,10 @@ class QuizzDetails extends PureComponent {
     //     this.props.updateQuestionCard(this.props.match.params.id, question)
     // }
 
+    
+
+   
+
 // make a render question function with card content (see from Game List)
 // should generate a question id 
     
