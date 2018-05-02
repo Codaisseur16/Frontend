@@ -4,12 +4,12 @@ import {connect} from 'react-redux'
 import SendQuizz from './SendQuizz'
 import QuestionForm from './QuestionForm'
 // import {Redirect} from 'react-router-dom'
-import {updateQuestionCard} from '../actions/QuizzDetails'
+import {createQuestionCard ,updateQuestionCard} from '../actions/QuizzDetails'
 
 // Styling
 import Paper from 'material-ui/Paper'
 import Button from 'material-ui/Button'
-// import Card, { CardActions, CardContent } from 'material-ui/Card'
+import Card, { CardActions, CardContent } from 'material-ui/Card'
 import './QuizzDetails.css'
 
 class QuizzDetails extends PureComponent {
@@ -29,16 +29,21 @@ class QuizzDetails extends PureComponent {
     //     this.props.updateQuestionCard(this.props.match.params.id, question)
     // }
 
+    renderQuestionForm = (questionForm) => {
+
+        this.props.createQuestionCard(qNum)
+        //need to send a request (post) with question Number and get back an unique id 
+        return (
+        <QuestionForm/>
+        // key={question.id}
+        )
+    }
     
-
-   
-
-// make a render question function with card content (see from Game List)
 // should generate a question id 
     
     render () {
         
-        const {createQuestionCard, question } = this.props
+        const { questions } = this.props
 
         return (
             <Paper className="paper">
@@ -47,9 +52,14 @@ class QuizzDetails extends PureComponent {
                 <Button 
                 variant="raised"
                 className="add-question"
-                onClick={createQuestionCard}
+                onClick={this.renderQuestionForm}
                 > Add Question </Button>
-            <QuestionForm initialValues={question} onSubmit={this.updateQuestionCard}/>
+
+            <div>
+            {questions.map(question => this.renderQuestionForm(question))}
+            </div>
+
+            <QuestionForm initialValues={questions} onClick={this.updateQuestionCard}/>
             <SendQuizz/>
 
             </Paper>
@@ -64,4 +74,4 @@ const mapStateToProps = (state, props) => {
     }
   }
 
-export default connect (mapStateToProps, {updateQuestionCard})(QuizzDetails)
+export default connect (mapStateToProps, {updateQuestionCard, createQuestionCard })(QuizzDetails)
