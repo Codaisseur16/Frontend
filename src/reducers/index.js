@@ -4,7 +4,6 @@ import currentUser from './currentUser'
 import signup from './signup'
 import questions from './questions'
 import score from './score'
-import currentUser from './currentUser'
 import quizzes from './quizzes'
 
 export default {
@@ -14,7 +13,6 @@ export default {
   signup,
   questions,
   score,
-  currentUser,
   quizzes
 }
 

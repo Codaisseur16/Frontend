@@ -24,10 +24,10 @@ class App extends Component {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/logout" component={LogoutPage} />
             <Route exact path="/signup" component={SignupPage} />
-            <Route exact path="/quizzes" component={QuizzesList} /> 
+            <Route exact path="/quizzes" component={HomePageTeacher} /> 
             <Route exact path="/quizzes/:id" component={QuizPage} />
             <Route exact path="/quizzes/edit/:id" component={QuizzesList} />
-            <Route exact path="/" render={ () => <Redirect to="/login" /> } />
+            <Route exact path="/" render={ () => <Redirect to="/signup" /> } />
           </main>
         </div>
       </Router>
