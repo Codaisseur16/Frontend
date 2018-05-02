@@ -1,8 +1,9 @@
 .paper {
     margin: 40px auto;
     width: 90%;
-    /* overflow: hidden; */
 }
-.add-question {
-    margin: 12px
+.paper .add-question {
+    margin: 12px;
+    background-color: #F50057;
+    color: white
 }
