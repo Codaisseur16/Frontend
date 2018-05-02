@@ -1,6 +1,6 @@
 export const quizQuestions = {
     data: [{
-        id: 1,
+        id: 0,
         questId: 1,
         title: "What is this?",
         option1: "Dummy Data",
@@ -11,7 +11,7 @@ export const quizQuestions = {
         quizId: 1
     },
     {
-        id: 2,
+        id: 1,
         questId: 2,
         title: "Why is this?",
         option1: "Perché il papa non è il re",
@@ -22,7 +22,7 @@ export const quizQuestions = {
         quizId: 1
     },
     {
-        id: 3,
+        id: 2,
         questId: 3,
         title: "Do we really need one more question?",
         option1: "Just to try",
