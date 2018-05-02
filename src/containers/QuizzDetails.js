@@ -1,6 +1,8 @@
 //src/containers/QuizzDetails.js
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
+import AddQuestionButton from './AddQuestionButton'
+import SendQuizz from './SendQuizz'
 // import {Redirect} from 'react-router-dom'
 import {createQuestionCard, updateQuestionCard} from '../actions/QuizzDetails'
 
@@ -18,9 +20,7 @@ class QuizzDetails extends PureComponent {
     //       if (this.props.users === null) this.props.getUsers()
     //     }
     // }
-
-    // make a render question function with card content (see from Game List)
-
+    
     state = {}
 
 	handleSubmit = (e) => {
@@ -38,7 +38,6 @@ class QuizzDetails extends PureComponent {
 	}
 
     render () {
-        const {createQuestionCard} = this.props
 
         const initialValues = this.props.initialValues || {}
 
@@ -46,11 +45,8 @@ class QuizzDetails extends PureComponent {
             <Paper className="paper">
                 <h1>Quizz # 1</h1> 
                 {/* update with {quizz.id} */}
-                <Button 
-                variant="raised"
-                className="add-question"
-                onClick={createQuestionCard}
-                > Add Question </Button>
+            
+            <AddQuestionButton/>  
             
             <Card className="quizz-card">
                 <CardContent>
@@ -104,10 +100,8 @@ class QuizzDetails extends PureComponent {
                 </CardContent>
             </Card> 
 
-            <div>
-                <input type="text" placeholder="Type your webhook URL"name="correctAnswer" className="input-field"/>
-                <Button className="send-quizz-content"> Send </Button>
-            </div>
+            <SendQuizz/>
+
             </Paper>
 
         )
