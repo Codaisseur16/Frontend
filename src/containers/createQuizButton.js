@@ -8,15 +8,7 @@ import './createQuizButton.js'
 //import { userId } from '../jwt';
 
 class CreateQuizButton extends PureComponent {
-    state = {
-
-    }
-
-    componentWillMount() {
-        if (this.props.authenticated) {
-          if (this.props.users === null) this.props.getUsers()
-        }
-      }
+    state = {}
 
     handleSubmit = (e) => {
         e.preventDefault()
