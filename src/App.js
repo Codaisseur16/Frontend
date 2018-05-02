@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import './App.css';
 import QuizzesList from './containers/quizzeslist'
+import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
 
 class App extends Component {
@@ -17,7 +18,7 @@ class App extends Component {
             <Route exact path="/login" component={QuizzesList} />
             <Route exact path="/logout" component={QuizzesList} />
             <Route exact path="/signup" component={QuizzesList} />
-            <Route exact path="/quizzes" component={QuizzesList} /> 
+            <Route exact path="/quizzes" component={HomePageTeacher} /> 
             <Route exact path="/quizzes/:id" component={QuizzesList} />
             <Route exact path="/quizzes/edit/:id" component={QuizzesList} />
             <Route exact path="/" render={ () => <Redirect to="/quizzes" /> } />
