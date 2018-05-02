@@ -2,7 +2,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 // import {Redirect} from 'react-router-dom'
-import {createQuestionCard} from '../actions/QuizzDetails'
+import {createQuestionCard, updateQuestionCard} from '../actions/QuizzDetails'
 
 // Styling
 import Paper from 'material-ui/Paper'
@@ -25,7 +25,8 @@ class QuizzDetails extends PureComponent {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-        this.props.onSubmit(this.state) 
+        this.props.updateQuestionCard(this.state) 
+        console.log(this.state)
 	}
 
 	handleChange = (event) => {
@@ -94,12 +95,12 @@ class QuizzDetails extends PureComponent {
                             />
                         </div>
 
-                    </form>
-                    
                     <CardActions>
-                        <Button className="question-action" onSubmit={this.handleSubmit}> Submit </Button>
+                        <Button className="question-action" onClick={this.handleSubmit}> Submit </Button>
                         <Button className="question-action"> Remove </Button>
                     </CardActions>
+                    </form>
+
                 </CardContent>
             </Card> 
 
@@ -120,4 +121,4 @@ class QuizzDetails extends PureComponent {
 //       null : Object.values(state.QuizzDetails).sort((a, b) => b.id - a.id)
 // })
 
-export default connect (null, {createQuestionCard })(QuizzDetails)
+export default connect (null, {createQuestionCard, updateQuestionCard })(QuizzDetails)

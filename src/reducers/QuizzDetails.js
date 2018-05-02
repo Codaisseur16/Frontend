@@ -8,8 +8,13 @@ export default (state = null, action) => {
             ...state,
             [action.payload.id]: action.payload
         }
+        // case UPDATE_QUESTION_CARD:
+        //     if (action.payload.id === state.id) {
+        //       return action.payload
+        //     } else return state
+
         case UPDATE_QUESTION_CARD:
-            if (action.payload.id === state.id) {
+            if (action.payload === state) {
               return action.payload
             } else return state
 

@@ -14,6 +14,11 @@ export const addQuestion = question => ({
     payload: question
 })
 
+export const updateQuestionCard = card => ({
+  type: UPDATE_QUESTION_CARD,
+    payload: card
+})
+
 export const createQuestionCard = () => (dispatch, getState) => {
   // const state = getState()
   // const jwt = state.currentUser.jwt
@@ -27,16 +32,16 @@ export const createQuestionCard = () => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
-export const updateQuestionCard = (questionId, card) => (dispatch) => {
-  request
-    .patch(`${baseUrl}/question`) ///${id}
-    .send(card)
-    .then(response =>dispatch({
-      type: UPDATE_QUESTION_CARD,
-      payload: response.body
-    }))
-    .catch(err => console.error(err))
-}
+// export const updateQuestionCard = (questionId, card) => (dispatch) => {
+//   request
+//     .patch(`${baseUrl}/question`) ///${id}
+//     .send(card)
+//     .then(response =>dispatch({
+//       type: UPDATE_QUESTION_CARD,
+//       payload: response.body
+//     }))
+//     .catch(err => console.error(err))
+// }
 
 // export const updateQuestionCard = (questionId, card) => (dispatch, getState) => {
 //   const state = getState()
