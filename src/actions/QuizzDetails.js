@@ -34,9 +34,7 @@ card['quizId'] = quizId
 
 export const deleteQuestionCard = (questionId) => (dispatch) => {
   request
-    .delete(`${baseUrl}/question`) //get the delete endpoint 
-    .then(response => dispatch({
-      type: DELETE_QUESTION_CARD,
-      payload: questionId
-    }))
+    .delete(`${baseUrl}/questions/:id`) //get the delete endpoint 
+    .then(response => dispatch(deleteQuestion(questionId)))
+    .catch(err => console.error(err))
 }
