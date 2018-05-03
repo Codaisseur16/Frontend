@@ -16,6 +16,7 @@ class QuizzDetails extends PureComponent {
         clicked: false
     }
 
+
     componentWillMount() {
         // const quizId = (window.location.href).split('/').pop()
         this.props.fetchQuestions(1)
@@ -24,7 +25,6 @@ class QuizzDetails extends PureComponent {
     renderCard = () => {
         this.setState({clicked: true})
     }
-
 
     render () {
         const quizId = (window.location.href).split('/').pop()

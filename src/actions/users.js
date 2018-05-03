@@ -3,7 +3,8 @@ import * as request from 'superagent'
 // import {baseUrl} from '../constants'
 import {isExpired} from '../jwt'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:4003'
+const authorizationUrl = 'http://localhost:4000'
 
 export const ADD_USER = 'ADD_USER'
 export const UPDATE_USER = 'UPDATE_USER'
@@ -23,9 +24,10 @@ export const logout = () => ({
 
 export const login = (email, password) => (dispatch) =>
 	request
-		.post(`${baseUrl}/logins`)
+		.post(`${authorizationUrl}/logins`)
     .send({email, password})
     .then(result => {
+			console.log(result.body)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: result.body
@@ -43,14 +45,14 @@ export const login = (email, password) => (dispatch) =>
     	}
     })
 
-export const signup = (email, password, teacher) => (dispatch) => {
+export const signup = (firstName, lastName, email, password, teacher) => (dispatch) => {
 console.log(teacher)
 	request
 		.post(`${baseUrl}/users`)
-		.send({ firstName: email, lastName: email, email, password, teacher })
+		.send({ firstName, lastName, email, password, teacher })
 		.then(result => {
 			dispatch({
-				type: USER_SIGNUP_SUCCESS, payload: teacher
+				type: USER_SIGNUP_SUCCESS
 			})
 		})
 		.catch(err => {
