@@ -1,7 +1,7 @@
 import {quizQuestions} from '../dummydata/questions'
-//import * as request from 'superagent'
+import * as request from 'superagent'
 
-//const baseUrl = 'http://localhost:4001'
+const baseUrl = 'http://localhost:4001'
 
 export const FETCH_QUESTIONS = 'FETCH_QUESTIONS'
 export const UPDATE_SCORE = 'UPDATE_SCORE'
