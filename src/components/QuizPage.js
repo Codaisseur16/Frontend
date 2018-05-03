@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {fetchQuestions, sendResponse} from '../actions/questions'
+import {getQuestions, sendResponse} from '../actions/questions'
+import Paper from 'material-ui/Paper'
+import './QuizPage.css'
 
 class QuizPage extends PureComponent {
     state = {
@@ -11,7 +13,7 @@ class QuizPage extends PureComponent {
     }
 
     componentWillMount() {
-    this.props.fetchQuestions(this.props.match.params.id)
+    this.props.getQuestions(this.props.match.params.id)
     }
 
     sendResponse = (response) => {
@@ -38,7 +40,7 @@ class QuizPage extends PureComponent {
         const {questions} = this.props
 
         return (
-          <div>
+          <Paper className="outer-paper">
             <h1>Quiz #1</h1>
                 { questions.map(question => (
                     <form key={question.id}>
@@ -55,7 +57,7 @@ class QuizPage extends PureComponent {
                     </form> )
                 )}
                 <button type="submit" onClick = {this.handleSubmit} >Submit</button>
-            </div>
+            </Paper>
         )
     }
 }
@@ -67,4 +69,4 @@ const mapStateToProps = (state) => ({
       currentUser: state.currentUser
     })
 
-    export default connect(mapStateToProps, {fetchQuestions, sendResponse})(QuizPage)
+    export default connect(mapStateToProps, {getQuestions, sendResponse})(QuizPage)
