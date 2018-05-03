@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import store from './store'
 
 ReactDOM.render(
     <Provider store={store}>
-    <App />
+            <App />
     </Provider>,
     document.getElementById('root'));
