@@ -5,6 +5,7 @@ import './App.css';
 import QuizPage from './components/QuizPage'
 import QuizzesList from './containers/quizzeslist'
 import Topbar from './components/Topbar'
+import GetScore from './components/GetScore'
 
 
 class App extends Component {
@@ -24,6 +25,8 @@ class App extends Component {
             <Route exact path="/quizzes" component={QuizzesList} /> 
             <Route exact path="/quizzes/:id" component={QuizPage} />
             <Route exact path="/quizzes/edit/:id" component={QuizzesList} />
+            <Route exact path="/scores/:id" component={GetScore}/>
+            
             <Route exact path="/" render={ () => <Redirect to="/quizzes" /> } />
           </main>
         </div>

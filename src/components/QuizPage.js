@@ -2,16 +2,19 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchQuestions, sendResponse} from '../actions/questions'
 
+
 class QuizPage extends PureComponent {
     state = {
-        quizId: 1,
-        userId: 1,
+        id: 2,
+        user_id: 2,
         teacher: false,
+        quiz_id:2,
         score: 0
     }
 
     componentWillMount() {
     this.props.fetchQuestions()
+    
     }
 
     sendResponse = (response) => {
@@ -25,6 +28,8 @@ class QuizPage extends PureComponent {
         console.log('After: ', this.state)
     }
 
+   
+
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)
@@ -36,7 +41,7 @@ class QuizPage extends PureComponent {
 
     render() {
         const {questions} = this.props
-
+        
         return (
           <div>
             <h1>Quiz #1</h1>
@@ -55,8 +60,14 @@ class QuizPage extends PureComponent {
                     </form> )
                 )}
                 <button type="submit" onClick = {this.handleSubmit} >Submit</button>
+               
+              
+               
             </div>
         )
+
+       
+        
     }
 }
 
