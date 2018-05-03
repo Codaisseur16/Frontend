@@ -6,7 +6,6 @@ import LoginPage from './components/login/LoginPage'
 import SignupPage from './components/signup/SignupPage'
 import LogoutPage from './components/logout/LogoutPage'
 import QuizPage from './components/QuizPage'
-import QuizzesList from './containers/quizzeslist'
 import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
 
@@ -26,7 +25,7 @@ class App extends Component {
             <Route exact path="/signup" component={SignupPage} />
             <Route exact path="/quizzes" component={HomePageTeacher} /> 
             <Route exact path="/quizzes/:id" component={QuizPage} />
-            <Route exact path="/quizzes/edit/:id" component={QuizzesList} />
+            <Route exact path="/quizzes/edit/:id" component={HomePageTeacher} />
             <Route exact path="/" render={ () => <Redirect to="/signup" /> } />
           </main>
         </div>
