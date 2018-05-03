@@ -6,14 +6,18 @@ import {Redirect} from 'react-router-dom'
 
 class SignupPage extends PureComponent {
 	handleSubmit = (data) => {
-		console.log(data)
-		this.props.postSignup(data.email, data.password, data.teacher)
+		console.log(this.props)
+		const { firstName, lastName, email, password, teacher } = data
+		// console.log(firstName)
+		this.props.postSignup(firstName, lastName, email, password, teacher)
 	}
 
 	render() {
 		if (this.props.signup.success) return (
 			<Redirect to="/" />
 		)
+		console.log(this.props)
+
 
 		return (
 			<div>
