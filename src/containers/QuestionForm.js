@@ -9,7 +9,9 @@ import Card, { CardActions, CardContent } from 'material-ui/Card'
 
 class QuestionForm extends PureComponent {
 
-    state = {}
+    state = {
+        quiz_id: Number((window.location.href).split('/').pop())
+    }
 
 	handleSubmit = (e) => {
         e.preventDefault()
@@ -18,11 +20,9 @@ class QuestionForm extends PureComponent {
 
 	handleChange = (event) => {
         const {name, value} = event.target
-        const quizId = (window.location.href).split('/').pop()
 
 		this.setState({
-          [name]: value,
-          quiz_id: quizId
+          [name]: value
 		})
 	}
 
