@@ -34,7 +34,7 @@ class QuizzDetails extends PureComponent {
         this.props.createQuestionCard(qNum)
         //need to send a request (post) with question Number and get back an unique id 
         return (
-        <QuestionForm/>
+        <QuestionForm initialValues= ''/>
         // key={question.id}
         )
     }
