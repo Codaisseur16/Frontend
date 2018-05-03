@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField'
 import {createQuiz} from '../actions/quizzes'
 import store from '../store'
 import './createQuizButton.js'
+//import { userId } from '../jwt';
 
 class CreateQuizButton extends PureComponent {
     state = {}
@@ -19,6 +20,7 @@ class CreateQuizButton extends PureComponent {
     handleChange = title => event => {
         this.setState({
           [title]: event.target.value,
+          user: 1
         });
       };
 
