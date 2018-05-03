@@ -5,7 +5,6 @@ import Button from 'material-ui/Button';
 import CreateIcon from '@material-ui/icons/Create'
 import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
-
 import {getQuizzes} from '../actions/quizzes'
 
 // const quizzes =[
@@ -26,7 +25,7 @@ import {getQuizzes} from '../actions/quizzes'
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-          if (this.props.quizzes === null) this.props.getQuizzes()
+         this.props.getQuizzes()
         }
     
 
@@ -35,7 +34,7 @@ renderQuiz = (quiz) => {
     return (<Card key={quiz.id} className="quiz-card">
       <CardContent>
         <CardHeader
-         title={quiz.title}/>
+         title={quiz.quizTitle}/>
       </CardContent>
         <CardActions>
             <Button
@@ -60,6 +59,7 @@ renderQuiz = (quiz) => {
 
     render() {
         const {quizzes} = this.props
+        console.log(quizzes)
 
         return(
             <div>

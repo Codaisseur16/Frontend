@@ -1,8 +1,12 @@
-import {ADD_QUIZ} from '../actions/quizzes'
+import {ADD_QUIZ, GET_QUIZZES} from '../actions/quizzes'
 
 
-export default (state = [], {type, payload} = {}) => {
+export default (state = [], {type, payload}) => {
   switch (type) {
+    case GET_QUIZZES:
+    console.log("reducer" , payload)
+      return payload
+        
     case ADD_QUIZ:
       return {
         ...state,

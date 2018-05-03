@@ -12,15 +12,17 @@ const addQuiz = quiz => ({
     payload: quiz
   })
 
-  export const createQuiz = () => (dispatch, getState) => {
-  //  const state = getState()
-  //  const jwt = state.currentUser.jwt
+  export const createQuiz = (quiz) => (dispatch, getState) => {
+    const state = getState()
+    //const jwt = state.currentUser.jwt
+
    // if (isExpired(jwt)) return dispatch(logout())
-   
+   console.log(quiz)
     request
       .post(`${baseUrl}/quizzes`)
+      .send(quiz) 
     //  .set('Authorization', `Bearer ${jwt}`)
-      .then(result => dispatch(addQuiz(result.body)))
+      .then(result => dispatch(addQuiz(quiz)))
       .catch(err => console.error(err))
   }  
 
@@ -31,11 +33,9 @@ const addQuiz = quiz => ({
     request
       .get(`${baseUrl}/quizzes`)
    //   .set('Authorization', `Bearer ${jwt}`)
-      .then(result => {
-        dispatch({
+      .then(result => dispatch({
           type: GET_QUIZZES,
           payload: result.body
-        })
-      })
+        }))
       .catch(err => console.error(err))
   }
