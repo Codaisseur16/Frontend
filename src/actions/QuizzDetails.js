@@ -24,9 +24,8 @@ export const deleteQuestion = card => ({
 })
 
 export const updateQuestionCard = (card, quizId) => (dispatch) => {
-card['quizId'] = quizId
   request
-    .post(`${baseUrl}/questions`) ///${id}
+    .post(`${baseUrl}/questions`)
     .send(card, quizId)
     .then(result => dispatch(updateQuestion(card)))
     .catch(err => console.error(err))
@@ -34,7 +33,7 @@ card['quizId'] = quizId
 
 export const deleteQuestionCard = (questionId) => (dispatch) => {
   request
-    .delete(`${baseUrl}/questions/:id`) //get the delete endpoint 
-    .then(response => dispatch(deleteQuestion(questionId)))
+    .delete(`${baseUrl}/questions/${questionId}`) 
+    .then(result => dispatch(deleteQuestion(questionId)))
     .catch(err => console.error(err))
 }

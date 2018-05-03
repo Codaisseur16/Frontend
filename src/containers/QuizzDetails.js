@@ -19,12 +19,12 @@ class QuizzDetails extends PureComponent {
     }
 
     componentWillMount() {
-        // const quizId = (window.location.href).split('/').pop()
         this.props.fetchQuestions(this.props.match.params.id)
     }
 
-    delete = () => {
-        this.props.deleteQuestionCard(this.props.match.params.id)
+    delete = (question) => {
+        console.log(question.id)
+        this.props.deleteQuestionCard(question.id) //undefined
     }
 
     changeState = () => {
@@ -59,8 +59,7 @@ class QuizzDetails extends PureComponent {
     render () {
         const quizId = (window.location.href).split('/').pop()
         const {questions} = this.props
-        console.log(this.props)
-        console.log(this.state)
+        
         if (this.state.clicked === false) {
             return (
                 <Paper className="paper">
