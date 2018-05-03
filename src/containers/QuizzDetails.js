@@ -31,7 +31,7 @@ class QuizzDetails extends PureComponent {
 
     renderQuestionForm = (questionForm) => {
 
-        this.props.createQuestionCard(qNum)
+        this.props.createQuestionCard(questionForm)
         //need to send a request (post) with question Number and get back an unique id 
         return (
         <QuestionForm initialValues= ''/>
@@ -55,9 +55,9 @@ class QuizzDetails extends PureComponent {
                 onClick={this.renderQuestionForm}
                 > Add Question </Button>
 
-            <div>
+            {/* <div>
             {questions.map(question => this.renderQuestionForm(question))}
-            </div>
+            </div> */}
 
             <QuestionForm initialValues={questions} onClick={this.updateQuestionCard}/>
             <SendQuizz/>
