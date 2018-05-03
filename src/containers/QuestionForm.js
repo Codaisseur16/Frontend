@@ -1,5 +1,6 @@
 //src/containers/QuestionForm.js
 import React, {PureComponent} from 'react'
+import {connect} from 'react-redux'
 import {updateQuestionCard} from '../actions/QuizzDetails'
 
 //styling
@@ -95,4 +96,4 @@ class QuestionForm extends PureComponent {
 //       null : Object.values(state.QuizzDetails).sort((a, b) => b.id - a.id)
 // })
 
-export default QuestionForm
+export default connect(null, {updateQuestionCard}) (QuestionForm)
