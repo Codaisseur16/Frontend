@@ -25,7 +25,7 @@ import {getQuizzes} from '../actions/quizzes'
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-         this.props.getQuizzes()
+          if (this.props.quizzes !== null) this.props.getQuizzes()
         }
     
 
