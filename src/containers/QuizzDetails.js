@@ -4,8 +4,6 @@ import {connect} from 'react-redux'
 import SendQuizz from './SendQuizz'
 import QuestionForm from './QuestionForm'
 import {fetchQuestions} from '../actions/questions'
-// import {Redirect} from 'react-router-dom'
-import {createQuestionCard ,updateQuestionCard} from '../actions/QuizzDetails'
 
 // Styling
 import Paper from 'material-ui/Paper'
@@ -14,36 +12,55 @@ import Card, { CardActions, CardContent } from 'material-ui/Card'
 import './QuizzDetails.css'
 
 class QuizzDetails extends PureComponent {
+    state = {
+        clicked: false
+    }
 
 
     componentWillMount() {
-        if (this.props.questions !== null) this.props.fetchQuestions()
+        // const quizId = (window.location.href).split('/').pop()
+        this.props.fetchQuestions(1)
     }
 
-    // updateQuestionCard = (question) => {
-    //     this.props.updateQuestionCard(this.props.match.params.id, question)
-    // }
-
-    renderQuestionForm = (questionForm) => {
-
-
-        this.props.createQuestionCard(this.state)
-        //need to send a request (post) with question Number and get back an unique id
-
-        return (
-        <QuestionForm initialValues= ''/>
-        // key={question.id}
-        )
+    renderCard = () => {
+        this.setState({clicked: true})
     }
-
-
-// should generate a question id
 
     render () {
         const quizId = (window.location.href).split('/').pop()
-
         const {questions} = this.props
-        console.log(questions)
+        console.log(this.props)
+        console.log(this.state)
+        if (this.state.clicked === false) {
+            return (
+                <Paper className="paper">
+                <h1> Quiz #{quizId} </h1>
+                <Button
+                variant="raised"
+                className="add-question"
+                onClick={this.renderCard}
+                > Add Question </Button>
+
+                <SendQuizz/>
+
+                </Paper>
+            )
+        } else {
+            return (
+                <Paper className="paper">
+                <h1> # Quiz {quizId} </h1>
+                <Button
+                variant="raised"
+                className="add-question"
+                onClick={this.renderCard}
+                > Add Question </Button>
+
+                <QuestionForm/>
+                <SendQuizz/>
+
+            </Paper>
+            )
+        }
 
         return (
             <Paper className="paper">
@@ -51,14 +68,9 @@ class QuizzDetails extends PureComponent {
                 <Button
                 variant="raised"
                 className="add-question"
-                onClick={this.renderQuestionForm}
+                onClick={this.renderCard}
                 > Add Question </Button>
 
-            {/* <div>
-                {questions.map(question => this.renderQuestionForm(question))}
-            </div> */}
-
-            <QuestionForm initialValues={questions} onClick={this.updateQuestionCard}/>
             <SendQuizz/>
 
             </Paper>
@@ -67,10 +79,10 @@ class QuizzDetails extends PureComponent {
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
-      questions: state.QuizzDetails
+      questions: state.questions
     }
 }
 
-export default connect (mapStateToProps, {updateQuestionCard, createQuestionCard })(QuizzDetails)
+export default connect (mapStateToProps, {fetchQuestions})(QuizzDetails)
