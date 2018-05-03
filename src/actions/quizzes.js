@@ -6,6 +6,7 @@ const baseUrl = 'http://localhost:4001'
 
 export const ADD_QUIZ = 'ADD_QUIZ'
 export const GET_QUIZZES = 'GET_QUIZZES'
+export const FETCHED_DETAILED_QUIZ = 'FETCHED_DETAILED_QUIZ'
 
 const addQuiz = quiz => ({
     type: ADD_QUIZ,
@@ -39,3 +40,4 @@ const addQuiz = quiz => ({
         }))
       .catch(err => console.error(err))
   }
+

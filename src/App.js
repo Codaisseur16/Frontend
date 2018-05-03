@@ -25,7 +25,8 @@ class App extends Component {
             <Route exact path="/quizzes" component={HomePageTeacher} />
             <Route exact path="/quizzes/:id" component={QuizPage} />
             <Route exact path="/quizzes/edit/:id" component={QuizzDetails} />
-            <Route exact path="/" render={ () => <Redirect to="/signup" /> } />
+            <Route exact path="/" render={ () => <Redirect to="/login" /> } />
+
           </main>
         </div>
       </Router>

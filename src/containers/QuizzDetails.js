@@ -18,6 +18,7 @@ class QuizzDetails extends PureComponent {
         clicked: false
     }
 
+
     componentWillMount() {
         // const quizId = (window.location.href).split('/').pop()
         this.props.fetchQuestions(this.props.match.params.id)
@@ -54,7 +55,6 @@ class QuizzDetails extends PureComponent {
             </div>
         )
     }
-
 
     render () {
         const quizId = (window.location.href).split('/').pop()
