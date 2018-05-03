@@ -2,7 +2,7 @@ import * as request from 'superagent'
 //import {logout} from './users'
 //import {isExpired} from '../jwt'
 
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:4001'
 
 export const ADD_QUIZ = 'ADD_QUIZ'
 export const GET_QUIZZES = 'GET_QUIZZES'
