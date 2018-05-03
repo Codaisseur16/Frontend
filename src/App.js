@@ -6,7 +6,6 @@ import SignupPage from './components/signup/SignupPage'
 import LogoutPage from './components/logout/LogoutPage'
 import QuizzDetails from './containers/QuizzDetails'
 import QuizPage from './components/QuizPage'
-import QuizzesList from './containers/quizzeslist'
 import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
 
