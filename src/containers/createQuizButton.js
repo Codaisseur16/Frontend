@@ -12,15 +12,15 @@ class CreateQuizButton extends PureComponent {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state);
+        //console.log(this.state);
         store.dispatch(createQuiz(this.state))   
     }
 
 
-    handleChange = title => event => {
+    handleChange = () => event => {
         this.setState({
-          [title]: event.target.value,
-          user: 1
+          quizTitle: event.target.value,
+          userId: 1
         });
       };
 
@@ -30,10 +30,10 @@ class CreateQuizButton extends PureComponent {
         return(
             <form onSubmit={this.handleSubmit}>
               <TextField
-                id='title'
+                id='quizTitle'
                 label='Title Quiz'
-                value={this.state.title || initialValues.title || ''}
-                onChange={this.handleChange('title')}
+                value={this.state.quizTitle || initialValues.quizTitle || ''}
+                onChange={this.handleChange('quizTitle')}
                 />
                 <Button
                     type='submit'
