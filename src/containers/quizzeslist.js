@@ -7,20 +7,6 @@ import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
 
-// const quizzes =[
-//     {
-//     id: 1,
-//     title: 'Codaisseur: How do you like us?'
-//     },
-//     {
-//     id: 2,
-//     title: 'React/Redux: What do you know?'
-//     },
-//     {
-//     id: 3,
-//     title: 'Can you build an app with your group?'
-//     }
-// ]
 
 class QuizzesList extends PureComponent {
 
@@ -59,7 +45,6 @@ renderQuiz = (quiz) => {
 
     render() {
         const {quizzes} = this.props
-        console.log(quizzes)
 
         return(
             <div>

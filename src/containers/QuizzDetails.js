@@ -15,10 +15,10 @@ import './QuizzDetails.css'
 
 class QuizzDetails extends PureComponent {
 
+
     componentWillMount() {
         if (this.props.questions !== null) this.props.fetchQuestions()
     }
-    
 
     // updateQuestionCard = (question) => {
     //     this.props.updateQuestionCard(this.props.match.params.id, question)
@@ -26,13 +26,16 @@ class QuizzDetails extends PureComponent {
 
     renderQuestionForm = (questionForm) => {
 
+
         this.props.createQuestionCard(this.state)
         //need to send a request (post) with question Number and get back an unique id
+
         return (
         <QuestionForm initialValues= ''/>
         // key={question.id}
         )
     }
+
 
 // should generate a question id
 
