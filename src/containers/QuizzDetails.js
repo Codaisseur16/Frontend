@@ -24,6 +24,7 @@ class QuizzDetails extends PureComponent {
     //     this.props.fetchQuizz(this.props.match.params.id)
     //     this.props.fetchQuestion(this.props.match.params.id)
     // }
+
     
     // updateQuestionCard = (question) => {
     //     this.props.updateQuestionCard(this.props.match.params.id, question)
@@ -39,21 +40,24 @@ class QuizzDetails extends PureComponent {
         )
     }
     
+
 // should generate a question id 
     
     render () {
-        
-        const { questions } = this.props
+        const quizId = (window.location.href).split('/').pop()
+        const { questions, quiz } = this.props
 
         return (
             <Paper className="paper">
-                <h1> # Quizz </h1>
+                {<h1> #Quiz {quizId} </h1> }
                 {/*  add id of quizz */}
                 <Button 
-                variant="raised"
-                className="add-question"
-                onClick={this.renderQuestionForm}
-                > Add Question </Button>
+                    variant="raised"
+                    className="add-question"
+                    onClick={this.renderQuestionForm}
+                    >
+                 Add Question 
+                </Button>
 
             {/* <div>
             {questions.map(question => this.renderQuestionForm(question))}
