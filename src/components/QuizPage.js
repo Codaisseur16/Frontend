@@ -1,16 +1,24 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {getQuestions, sendResponse} from '../actions/questions'
+import {getQuestions, sendResponse, addAnswer, updateAnswer} from '../actions/questions'
 import Paper from 'material-ui/Paper'
+import Card, {CardHeader, CardContent} from 'material-ui/Card';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import { FormLabel, FormControl, FormControlLabel} from 'material-ui/Form';
+import Button from 'material-ui/Button'
+import QuizQuestions from '../containers/QuizQuestions'
 import './QuizPage.css'
 
+function calculateScore(answers) {
+    let score = 0
+    answers.map(answer => {
+        if (answer.choice === answer.correct) return score += 1
+        else return score
+    })
+    return score
+}
+
 class QuizPage extends PureComponent {
-    state = {
-        quizId: this.props.match.params.id,
-        userId: this.props.currentUser.userId,
-        teacher: this.props.currentUser.teacher,
-        score: 0
-    }
 
     componentWillMount() {
     this.props.getQuestions(this.props.match.params.id)
@@ -20,20 +28,18 @@ class QuizPage extends PureComponent {
         this.props.sendResponse(response)
     }
 
-    handleChange = (question, e) => {
-        console.log('Before: ' , this.state)
-        if (e.target.value == question.answer)
-        this.setState({...this.state, score: this.state.score + 1})
-        console.log('After: ', this.state)
-    }
-
     handleSubmit = (e) => {
         e.preventDefault()
-        console.log(this.state)
-        this.sendResponse(this.state)
-        // this.props.onSubmit(this.state)
-        // console.log('You have selected: ' + this.state.choice + '. The correct answer was: ' + this.state.answer);
-        // if (this.state.choice == this.state.answer) this.sendResponse(this.state)
+        const score = calculateScore(this.props.answers)
+        const response = {
+            quizId: Number(this.props.match.params.id),
+            userId: this.props.currentUser.userId,
+            teacher: this.props.currentUser.teacher,
+            score: score
+        }
+        console.log(response)
+
+        this.sendResponse(response)
     }
 
     render() {
@@ -42,21 +48,15 @@ class QuizPage extends PureComponent {
         return (
           <Paper className="outer-paper">
             <h1>Quiz #1</h1>
-                { questions.map(question => (
-                    <form key={question.id}>
-                        <h3>{question.title}</h3>
-
-                        <input type="radio"  name='name' value= '1' onChange={(e) =>this.handleChange(question, e)}/>{question.option1}<br></br>
-
-                        <input type="radio" name='name' value= '2' onChange={(e) =>this.handleChange(question, e)}/>{question.option2}<br></br>
-
-                        <input type="radio" name='name' value= '3' onChange={(e) =>this.handleChange(question, e)}/>{question.option3}<br></br>
-
-                        <input type="radio" name='name' value= '4' onChange={(e) =>this.handleChange(question, e)}/>{question.option4}<br></br>
-
-                    </form> )
-                )}
-                <button type="submit" onClick = {this.handleSubmit} >Submit</button>
+                <QuizQuestions />
+                <Button
+                    type='submit'
+                    color="secondary"
+                    variant="raised"
+                    className="submit"
+                    onClick={this.handleSubmit}
+                > Submit
+                </Button>
             </Paper>
         )
     }
@@ -66,7 +66,8 @@ class QuizPage extends PureComponent {
 const mapStateToProps = (state) => ({
       questions: state.questions,
       score: state.score,
-      currentUser: state.currentUser
+      currentUser: state.currentUser,
+      answers: state.answers
     })
 
-    export default connect(mapStateToProps, {getQuestions, sendResponse})(QuizPage)
+    export default connect(mapStateToProps, {getQuestions, sendResponse, addAnswer, updateAnswer})(QuizPage)
