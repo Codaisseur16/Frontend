@@ -2,30 +2,16 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import Card, {CardActions, CardHeader, CardContent} from 'material-ui/Card';
 import Button from 'material-ui/Button';
-import Paper from 'material-ui/Paper'
+import CreateIcon from '@material-ui/icons/Create'
+import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
-
 import {getQuizzes} from '../actions/quizzes'
 
-const quizzes =[
-    {
-    id: 1,
-    title: 'Quiz1'
-    },
-    {
-    id: 2,
-    title: 'Quiz2'
-    },
-    {
-    id: 3,
-    title: 'Quiz3'
-    }
-]
 
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-          if (this.props.quizzes === null) this.props.getQuizzes()
+          if (this.props.quizzes !== null) this.props.getQuizzes()
         }
     
 
@@ -34,34 +20,37 @@ renderQuiz = (quiz) => {
     return (<Card key={quiz.id} className="quiz-card">
       <CardContent>
         <CardHeader
-         title={quiz.title}/>
+         title={quiz.quizTitle}/>
       </CardContent>
         <CardActions>
             <Button
             size="small"
+            variant="raised"
             onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
             > 
             EDIT 
+            <CreateIcon />
             </Button>
             <Button
             size="small"
+            variant="raised"
             onClick={() => window.location.href=`/quizzes/${quiz.id}`}
             >
             PLAY
+             <PlayCircleOutline/>
             </Button>
         </CardActions>
     </Card>
     )}
 
     render() {
-       // const {quizzes} = this.props
+        const {quizzes} = this.props
 
         return(
-            <Paper className="outer-paper">
-                <div>
+            <div>
                 {quizzes.map(quiz => this.renderQuiz(quiz))}
-                </div>
-            </Paper>
+            </div>
+            
         )
     }
 }

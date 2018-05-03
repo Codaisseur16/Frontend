@@ -5,16 +5,14 @@ import {fetchQuestions, sendResponse} from '../actions/questions'
 
 class QuizPage extends PureComponent {
     state = {
-        id: 2,
-        user_id: 2,
-        teacher: false,
-        quiz_id:2,
+        quiz_id: this.props.match.params.id,
+        user_id: this.props.currentUser.userId,
+        teacher: this.props.currentUser.teacher,
         score: 0
     }
 
     componentWillMount() {
-    this.props.fetchQuestions()
-    
+    this.props.fetchQuestions(this.props.match.params.id)
     }
 
     sendResponse = (response) => {
@@ -74,7 +72,8 @@ class QuizPage extends PureComponent {
 
 const mapStateToProps = (state) => ({
       questions: state.questions,
-      score: state.score
+      score: state.score,
+      currentUser: state.currentUser
     })
 
     export default connect(mapStateToProps, {fetchQuestions, sendResponse})(QuizPage)
