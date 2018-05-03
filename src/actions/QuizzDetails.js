@@ -1,6 +1,6 @@
 //src/actions/QuizzDetails.js
 import * as request from 'superagent'
-const baseUrl = 'http://localhost:4000'
+const baseUrl = 'http://localhost:4001'
 // import {logout} from './users'
 // import {isExpired} from '../jwt'
 export const GET_GAME = 'GET_GAME'
@@ -14,32 +14,30 @@ export const addQuestion = question => ({
     payload: question
 })
 
-// export const updateQuestionCard = question => ({
-//   type: UPDATE_QUESTION_CARD,
-//     payload: question
-// })
+export const updateQuestion= card => ({
+  type: UPDATE_QUESTION_CARD,
+    payload: card
+})
 
-export const createQuestionCard = () => (dispatch, getState) => {
-  // const state = getState()
+export const createQuestionCard = (question) => (dispatch, getState) => {
+  const state = getState()
   // const jwt = state.currentUser.jwt
-
   // if (isExpired(jwt)) return dispatch(logout())
 
   request
-    .post(`${baseUrl}/quizzquestion`)// /${id} of quizz
+    .post(`${baseUrl}/questions`)
+    .send(question)
     // .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addQuestion(result.body)))
+    .then(result => dispatch(addQuestion(question)))
     .catch(err => console.error(err))
 }
 
-export const updateQuestionCard = (questionId, card) => (dispatch) => {
+
+export const updateQuestionCard = (card) => (dispatch) => {
   request
-    .patch(`${baseUrl}/question`) ///${id}
+    .post(`${baseUrl}/questions`) ///${id}
     .send(card)
-    .then(response =>dispatch({
-      type: UPDATE_QUESTION_CARD,
-      payload: response.body
-    }))
+    .then(result => dispatch(updateQuestion(card)))
     .catch(err => console.error(err))
 }
 

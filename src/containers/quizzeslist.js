@@ -5,28 +5,13 @@ import Button from 'material-ui/Button';
 import CreateIcon from '@material-ui/icons/Create'
 import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
-
 import {getQuizzes} from '../actions/quizzes'
 
-// const quizzes =[
-//     {
-//     id: 1,
-//     title: 'Codaisseur: How do you like us?'
-//     },
-//     {
-//     id: 2,
-//     title: 'React/Redux: What do you know?'
-//     },
-//     {
-//     id: 3,
-//     title: 'Can you build an app with your group?'
-//     }
-// ]
 
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-          if (this.props.quizzes === null) this.props.getQuizzes()
+          if (this.props.quizzes !== null) this.props.getQuizzes()
         }
     
 
@@ -35,7 +20,7 @@ renderQuiz = (quiz) => {
     return (<Card key={quiz.id} className="quiz-card">
       <CardContent>
         <CardHeader
-         title={quiz.title}/>
+         title={quiz.quizTitle}/>
       </CardContent>
         <CardActions>
             <Button
