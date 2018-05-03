@@ -68,7 +68,7 @@ class QuestionForm extends PureComponent {
 
                         <div className="correct-field">
                             <label className="label-field">CORRECT: </label>
-                            <input type="text" className="input-field"
+                            <input type="text" className="input-field" placeholder='Enter the option number'
                             name="correctAnswer" id="correctAnswer"
                             value={this.state.correctAnswer || initialValues.correctAnswer || ''} 
                             onChange={ this.handleChange }

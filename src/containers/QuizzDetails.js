@@ -17,7 +17,8 @@ class QuizzDetails extends PureComponent {
     }
 
     componentWillMount() {
-        if (this.props.questions !== null) this.props.fetchQuestions()
+        // const quizId = (window.location.href).split('/').pop()
+        this.props.fetchQuestions(1)
     }
 
     renderCard = () => {
@@ -27,11 +28,13 @@ class QuizzDetails extends PureComponent {
 
     render () {
         const quizId = (window.location.href).split('/').pop()
+        const {questions} = this.props
+        console.log(this.props)
         console.log(this.state)
         if (this.state.clicked === false) {
             return (
                 <Paper className="paper">
-                <h1> # Quiz {quizId} </h1>
+                <h1> Quiz #{quizId} </h1>
                 <Button
                 variant="raised"
                 className="add-question"
@@ -76,10 +79,10 @@ class QuizzDetails extends PureComponent {
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
     return {
-      questions: state.QuizzDetails
+      questions: state.questions
     }
 }
 
-export default connect (mapStateToProps)(QuizzDetails)
+export default connect (mapStateToProps, {fetchQuestions})(QuizzDetails)
