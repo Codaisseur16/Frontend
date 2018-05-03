@@ -23,10 +23,20 @@ export const deleteQuestion = card => ({
   payload: card
 })
 
-export const updateQuestionCard = (card) => (dispatch) => {
+export const updateQuestionCard = (card, quizId) => (dispatch) => {
+card['quizId'] = quizId
   request
     .post(`${baseUrl}/questions`) ///${id}
-    .send(card)
+    .send(card, quizId)
     .then(result => dispatch(updateQuestion(card)))
     .catch(err => console.error(err))
+}
+
+export const deleteQuestionCard = (questionId) => (dispatch) => {
+  request
+    .delete(`${baseUrl}/question`) //get the delete endpoint 
+    .then(response => dispatch({
+      type: DELETE_QUESTION_CARD,
+      payload: questionId
+    }))
 }
