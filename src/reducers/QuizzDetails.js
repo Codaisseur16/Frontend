@@ -1,13 +1,13 @@
 //src/reducers/QuizzDetails.js
-import { UPDATE_QUESTION_CARD} from '../actions/QuizzDetails'
+import { CREATE_QUESTION_CARD } from '../actions/QuizzDetails'
 
-export default (state = [], action) => {
-    switch (action.type) {
-        case UPDATE_QUESTION_CARD:
-            if (action.payload.id === state.id) {
-              return action.payload
+export default (state = [], {type, payload}) => {
+    switch (type) {
+        case CREATE_QUESTION_CARD:
+            if (payload.id === state.id) {
+              return payload
             } else return state
-
+  	    
         default: 
         return state
     }

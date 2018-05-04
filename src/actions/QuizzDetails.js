@@ -5,40 +5,12 @@ import {isExpired} from '../jwt'
 
 const baseUrl = 'http://localhost:4001'
 
-export const GET_GAME = 'GET_GAME'
-export const ADD_QUESTION_CARD = 'ADD_QUESTION_CARD'
-export const UPDATE_QUESTION_CARD = 'UPDATE_QUESTION_CARD'
-export const DELETE_GAME = 'DELETE_CARD'
-export const FETCH_SUBMITED_QUESTION = 'FETCH_SUBMITED_QUESTION'
+export const CREATE_QUESTION_CARD = 'CREATE_QUESTION_CARD'
 export const DELETE_QUESTION_CARD = 'DELETE_QUESTION_CARD'
 
-
-export const addQuestion = question => ({
-    type: ADD_QUESTION_CARD,
-    payload: question
-})
-
-export const updateQuestion= card => ({
-  type: UPDATE_QUESTION_CARD,
-    payload: card
-})
-
-export const createQuestionCard = (question) => (dispatch, getState) => {
-  const state = getState()
-  const jwt = state.currentUser.jwt
-  if (isExpired(jwt)) return dispatch(logout())
-
-  request
-    .post(`${baseUrl}/questions`)
-    .send(question)
-    .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addQuestion(question)))
-    .catch(err => console.error(err))
-}
-
-export const fetchSubmitedQuestion = question => ({
-  type: FETCH_SUBMITED_QUESTION,
-  payload: question 
+export const createQuestion = card => ({
+  type: CREATE_QUESTION_CARD,
+  payload: card
 })
 
 export const deleteQuestion = card => ({
@@ -46,12 +18,19 @@ export const deleteQuestion = card => ({
   payload: card
 })
 
-
-export const updateQuestionCard = (card) => (dispatch) => {
+export const createQuestionCard = (card) => (dispatch) => {
+  console.log(card)
   request
-    .post(`${baseUrl}/questions`) ///${id}
+    .post(`${baseUrl}/questions`)
     .send(card)
-    .then(result => dispatch(updateQuestion(card)))
+    .then(result => dispatch(createQuestion(card)))
+    .catch(err => console.error(err))
+}
+
+export const deleteQuestionCard = (questionId) => (dispatch) => {
+  request
+    .delete(`${baseUrl}/questions/${questionId}`) 
+    .then(result => dispatch(deleteQuestion(questionId)))
     .catch(err => console.error(err))
 }
 
