@@ -69,8 +69,9 @@ class QuizzDetails extends PureComponent {
                 variant="raised"
                 className="add-question"
                 onClick={this.renderCard}
-                > Add Question </Button>
-
+                > 
+                  Add Question 
+              </Button>
             <SendQuizz/>
 
             </Paper>

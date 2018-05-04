@@ -1,6 +1,6 @@
 // add simple actions here that don't use endpoints and backend stu
 import * as request from 'superagent'
-// import {baseUrl} from '../constants'
+//import {baseUrl} from '../constants'
 import {isExpired} from '../jwt'
 
 const baseUrl = 'http://localhost:4003'
@@ -27,7 +27,6 @@ export const login = (email, password) => (dispatch) =>
 		.post(`${authorizationUrl}/logins`)
     .send({email, password})
     .then(result => {
-			console.log(result.body)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: result.body

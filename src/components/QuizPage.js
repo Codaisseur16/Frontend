@@ -1,11 +1,13 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchQuestions, sendResponse} from '../actions/questions'
+import {Link} from 'react-router-dom'
+
 
 class QuizPage extends PureComponent {
     state = {
-        quizId: this.props.match.params.id,
-        userId: this.props.currentUser.userId,
+        quiz_id: this.props.match.params.id,
+        user_id: this.props.currentUser.userId,
         teacher: this.props.currentUser.teacher,
         score: 0
     }
@@ -25,6 +27,8 @@ class QuizPage extends PureComponent {
         console.log('After: ', this.state)
     }
 
+   
+
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)
@@ -36,7 +40,7 @@ class QuizPage extends PureComponent {
 
     render() {
         const {questions} = this.props
-
+        
         return (
           <div>
             <h1>Quiz #1</h1>
@@ -55,8 +59,14 @@ class QuizPage extends PureComponent {
                     </form> )
                 )}
                 <button type="submit" onClick = {this.handleSubmit} >Submit</button>
+               
+                <Link to='/scores'><button type="submit" >Get Score</button></Link>
+               
             </div>
         )
+
+       
+        
     }
 }
 
