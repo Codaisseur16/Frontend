@@ -1,4 +1,4 @@
-import {quizQuestions} from '../dummydata/questions'
+//import {quizQuestions} from '../dummydata/questions'
 import * as request from 'superagent'
 
 const baseUrlQuestions = 'http://localhost:4001'

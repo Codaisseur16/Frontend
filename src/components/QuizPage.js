@@ -1,11 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getQuestions, sendResponse} from '../actions/questions'
-import {Link} from 'react-router-dom'
 import Paper from 'material-ui/Paper'
-import Card, {CardHeader, CardContent} from 'material-ui/Card';
-import Radio, { RadioGroup } from 'material-ui/Radio';
-import { FormLabel, FormControl, FormControlLabel} from 'material-ui/Form';
 import Button from 'material-ui/Button'
 import QuizQuestions from '../containers/QuizQuestions'
 import './QuizPage.css'
@@ -44,7 +40,7 @@ class QuizPage extends PureComponent {
     }
 
     render() {
-        const {questions} = this.props
+        //const {questions} = this.props
 
         return (
           <Paper className="outer-paper">
