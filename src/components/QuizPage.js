@@ -65,7 +65,6 @@ class QuizPage extends PureComponent {
 
 const mapStateToProps = (state) => ({
       questions: state.questions,
-      score: state.score,
       currentUser: state.currentUser,
       answers: state.answers
     })

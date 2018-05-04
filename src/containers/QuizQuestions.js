@@ -8,9 +8,9 @@ import { FormLabel, FormControl, FormControlLabel} from 'material-ui/Form';
 import '../components/QuizPage.css'
 
 function getChecked(questionId, answers) {
-    console.log(questionId)
     const currentAnswer = answers.filter(answer => {return answer.questionId === questionId})
-    console.log(currentAnswer)
+    const currentAnswerObj = currentAnswer[0]
+    if (currentAnswerObj !== undefined) return String(currentAnswerObj.choice)
 }
 
 class QuizQuestions extends PureComponent {
@@ -54,7 +54,7 @@ class QuizQuestions extends PureComponent {
                     onChange={(e) => this.handleChange(e, question)}
                     key={question.id}>
 
-                    <FormControlLabel value='1' control={<Radio checked={true}/>} label={question.option1} />
+                    <FormControlLabel value='1' control={<Radio />} label={question.option1} />
                     <FormControlLabel value='2' control={<Radio />} label={question.option2} />
                     <FormControlLabel value='3' control={<Radio />} label={question.option3} />
                     <FormControlLabel value='4' control={<Radio />} label={question.option4} />
