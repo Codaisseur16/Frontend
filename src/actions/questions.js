@@ -38,7 +38,7 @@ export const updateScore = () => ({
        .send(response)
        .then(response => dispatch({
          type: SEND_RESPONSE,
-         payload: response
+         payload: response.req._data
       }))
       .catch(err => alert(err))
 }
