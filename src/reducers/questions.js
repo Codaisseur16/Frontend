@@ -1,4 +1,4 @@
-import {GET_QUESTIONS} from '../actions/questions'
+import { GET_QUESTIONS } from '../actions/questions'
 import {DELETE_QUESTION_CARD, CREATE_QUESTION_CARD} from '../actions/QuizzDetails'
 
 export default (state = [], {type, payload}) => {
