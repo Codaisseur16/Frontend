@@ -22,7 +22,7 @@ class QuizPage extends PureComponent {
 
     handleChange = (question, e) => {
         console.log('Before: ' , this.state)
-        if (e.target.value == question.answer)
+        if (e.target.value == question.answer) 
         this.setState({...this.state, score: this.state.score + 1})
         console.log('After: ', this.state)
     }

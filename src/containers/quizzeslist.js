@@ -6,7 +6,6 @@ import CreateIcon from '@material-ui/icons/Create'
 import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
-import {getUsers} from '../actions/users'
 
 // const currentUser = [
 //     {

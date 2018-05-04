@@ -8,7 +8,7 @@ import {getQuestions} from '../actions/questions'
 // Styling
 import Paper from 'material-ui/Paper'
 import Button from 'material-ui/Button'
-import Card, { CardActions, CardContent } from 'material-ui/Card'
+//import Card, { CardActions, CardContent } from 'material-ui/Card'
 import './QuizzDetails.css'
 
 class QuizzDetails extends PureComponent {
