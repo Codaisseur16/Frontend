@@ -12,4 +12,3 @@ export default (state = initialstate, {type, payload}) => {
         return state
     }
 }
- 
