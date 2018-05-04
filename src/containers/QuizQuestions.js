@@ -41,10 +41,11 @@ class QuizQuestions extends PureComponent {
         const {questions, answers} = this.props
 
         return (
-            <div>{ questions.map(question => (
+            <div>{ questions.map(question =>
+                <div className= "questionsContainer">
                 <FormControl component="fieldset">
 
-                    <FormLabel>{question.title}</FormLabel>
+                    <FormLabel component='legend'>{question.title}</FormLabel>
 
                     <RadioGroup
                     name={`question.id`}
@@ -52,14 +53,15 @@ class QuizQuestions extends PureComponent {
                     onChange={(e) => this.handleChange(e, question)}
                     key={question.id}>
 
-                    <FormControlLabel value='1' control={<Radio />} label={question.option1} key={`${question.id} : 1`} />
-                    <FormControlLabel value='2' control={<Radio />} label={question.option2} key={`${question.id} : 2`}/>
-                    <FormControlLabel value='3' control={<Radio />} label={question.option3} key={`${question.id} : 3`}/>
-                    <FormControlLabel value='4' control={<Radio />} label={question.option4} key={`${question.id} : 4`}/>
+                    <FormControlLabel value='1' control={<Radio className="Radio" />} label={question.option1} key={`${question.id} : 1`} />
+                    <FormControlLabel value='2' control={<Radio className="Radio" />} label={question.option2} key={`${question.id} : 2`}/>
+                    <FormControlLabel value='3' control={<Radio className="Radio" />} label={question.option3} key={`${question.id} : 3`}/>
+                    <FormControlLabel value='4' control={<Radio className="Radio" />} label={question.option4} key={`${question.id} : 4`}/>
 
                   </RadioGroup>
                 </FormControl>
-            ))}
+                </div>
+            )}
             </div>
         )
     }
