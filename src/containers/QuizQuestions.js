@@ -35,8 +35,6 @@ class QuizQuestions extends PureComponent {
         if (questionsAnswered.indexOf(question.id) > -1) { this.updateAnswer(answer)}
         else {this.addAnswer(answer)}
 
-        e.target.checked
-
     }
 
     render() {
