@@ -29,8 +29,8 @@ class QuizPage extends PureComponent {
         e.preventDefault()
         const score = calculateScore(this.props.answers)
         const response = {
-            quizId: Number(this.props.match.params.id),
-            userId: this.props.currentUser.userId,
+            quiz_id: Number(this.props.match.params.id),
+            user_id: this.props.currentUser.userId,
             teacher: this.props.currentUser.teacher,
             score: score
         }
@@ -67,4 +67,3 @@ const mapStateToProps = (state) => ({
     })
 
 export default connect(mapStateToProps, {getQuestions, sendResponse})(QuizPage)
-

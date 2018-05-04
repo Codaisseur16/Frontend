@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {addAnswer, updateAnswer} from '../actions/questions'
+import Paper from 'material-ui/Paper'
+import Card, {CardHeader, CardContent} from 'material-ui/Card';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel} from 'material-ui/Form';
 import '../components/QuizPage.css'
@@ -40,20 +42,20 @@ class QuizQuestions extends PureComponent {
 
         return (
             <div>{ questions.map(question => (
-                <FormControl component="fieldset" required>
+                <FormControl component="fieldset">
 
                     <FormLabel>{question.title}</FormLabel>
 
                     <RadioGroup
-                    name={question.id}
+                    name={`question.id`}
                     value={getChecked(question.id, answers)}
                     onChange={(e) => this.handleChange(e, question)}
                     key={question.id}>
 
-                    <FormControlLabel value='1' control={<Radio />} label={question.option1} />
-                    <FormControlLabel value='2' control={<Radio />} label={question.option2} />
-                    <FormControlLabel value='3' control={<Radio />} label={question.option3} />
-                    <FormControlLabel value='4' control={<Radio />} label={question.option4} />
+                    <FormControlLabel value='1' control={<Radio />} label={question.option1} key={`${question.id} : 1`} />
+                    <FormControlLabel value='2' control={<Radio />} label={question.option2} key={`${question.id} : 2`}/>
+                    <FormControlLabel value='3' control={<Radio />} label={question.option3} key={`${question.id} : 3`}/>
+                    <FormControlLabel value='4' control={<Radio />} label={question.option4} key={`${question.id} : 4`}/>
 
                   </RadioGroup>
 
