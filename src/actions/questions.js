@@ -12,6 +12,7 @@ export const GET_RESPONSE='GET_RESPONSE'
 
 export const fetchQuestions = (quizId) => (dispatch) => {
     request
+
       .get(`${quizUrl}/quizquestions/${quizId}`)
       .then(response => dispatch({
         type: FETCH_QUESTIONS,

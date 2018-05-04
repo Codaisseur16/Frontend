@@ -32,6 +32,26 @@ export const createQuestionCard = (question) => (dispatch, getState) => {
     .catch(err => console.error(err))
 }
 
+export const UPDATE_QUESTION_CARD = 'UPDATE_QUESTION_CARD'
+export const FETCH_SUBMITED_QUESTION = 'FETCH_SUBMITED_QUESTION'
+export const DELETE_QUESTION_CARD = 'DELETE_QUESTION_CARD'
+
+
+export const updateQuestion = card => ({
+  type: UPDATE_QUESTION_CARD,
+  payload: card
+})
+
+export const fetchSubmitedQuestion = question => ({
+  type: FETCH_SUBMITED_QUESTION,
+  payload: question 
+})
+
+export const deleteQuestion = card => ({
+  type: DELETE_QUESTION_CARD,
+  payload: card
+})
+
 
 export const updateQuestionCard = (card) => (dispatch) => {
   request
@@ -41,19 +61,3 @@ export const updateQuestionCard = (card) => (dispatch) => {
     .catch(err => console.error(err))
 }
 
-// export const updateQuestionCard = (questionId, card) => (dispatch, getState) => {
-//   const state = getState()
-//   const jwt = state.currentUser.jwt
-
-//   if (isExpired(jwt)) return dispatch(logout())
-
-//   request
-//     .patch(`${baseUrl}/question/${Id}`)
-//     .set('Authorization', `Bearer ${jwt}`)
-//     .send({ card })
-//     .then(_ => dispatch(updateQuestionCard()))
-//     .catch(err => console.error(err))
-// }
-
-// patch (update board)
-//delete - send id of question  

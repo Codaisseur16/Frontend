@@ -6,7 +6,6 @@ import {updateQuestionCard} from '../actions/QuizzDetails'
 //styling
 import Button from 'material-ui/Button'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
-// import './QuizzDetails.css'
 
 class QuestionForm extends PureComponent {
 
@@ -15,15 +14,15 @@ class QuestionForm extends PureComponent {
 	handleSubmit = (e) => {
         e.preventDefault()
         this.props.updateQuestionCard(this.state) 
-        // this.props.updateQuestionCard(question.id, this.state) // question id should be generated on post, so add new question  
-        console.log(this.state)
 	}
 
 	handleChange = (event) => {
-		const {name, value} = event.target
+        const {name, value} = event.target
+        const quizId = (window.location.href).split('/').pop()
 
 		this.setState({
-		  [name]: value
+          [name]: value,
+          quiz_id: quizId
 		})
 	}
 
@@ -69,7 +68,7 @@ class QuestionForm extends PureComponent {
 
                         <div className="correct-field">
                             <label className="label-field">CORRECT: </label>
-                            <input type="text" className="input-field"
+                            <input type="text" className="input-field" placeholder='Enter the option number'
                             name="correctAnswer" id="correctAnswer"
                             value={this.state.correctAnswer || initialValues.correctAnswer || ''} 
                             onChange={ this.handleChange }
@@ -88,12 +87,5 @@ class QuestionForm extends PureComponent {
         )
     }
 }
-
-// const mapStateToProps = state => ({
-//     // authenticated: state.currentUser !== null,
-//     // users: state.users === null ? null : state.users,
-//     quizzContent: state.QuizzDetails === null ?
-//       null : Object.values(state.QuizzDetails).sort((a, b) => b.id - a.id)
-// })
 
 export default connect(null, {updateQuestionCard}) (QuestionForm)
