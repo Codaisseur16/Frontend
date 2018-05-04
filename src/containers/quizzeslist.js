@@ -6,13 +6,17 @@ import CreateIcon from '@material-ui/icons/Create'
 import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
+import {Link} from 'react-router-dom'
 
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
           if (this.props.quizzes !== null) this.props.getQuizzes();
+            // if(this.props.currentUser.userId) localStorage.getItem(userId)
+
         }
 
+    
     
 
 renderQuiz = (quiz) => {
@@ -25,22 +29,24 @@ renderQuiz = (quiz) => {
       </CardContent>
         <CardActions>
         { currentUser.teacher && 
+            <Link to={`/quizzes/edit/${quiz.id}`}>
             <Button
                 size="small"
                 variant="raised"
-                onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
                 > 
                     EDIT 
                 <CreateIcon />
-            </Button> }
+            </Button> 
+            </Link>}
+            <Link to={`/quizzes/${quiz.id}`} >
             <Button
                 size="small"
                 variant="raised"
-                onClick={() => window.location.href=`/quizzes/${quiz.id}`}
-                >
-                    PLAY
+            >
+                PLAY
                 <PlayCircleOutline/>
             </Button>
+            </Link>
         </CardActions>
     </Card>
     )}

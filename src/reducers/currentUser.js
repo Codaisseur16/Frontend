@@ -9,6 +9,7 @@ try {
     const teacher = localStorage.getItem(['teacher'])
     if (jwt) {
         initialState = { jwt, userId, teacher }
+        // console.log(teacher,userId)
     }
 }
 catch (e) {
