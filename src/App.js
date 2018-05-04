@@ -9,14 +9,12 @@ import QuizPage from './components/QuizPage'
 import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
 import GetScore from './components/GetScore'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
   render() {
     return (
 
       <Router>
-        <MuiThemeProvider>
         <div>
           <nav>
             <Topbar />
@@ -33,7 +31,6 @@ class App extends Component {
 
           </main>
         </div>
-        </MuiThemeProvider>
       </Router>
     )
   }
