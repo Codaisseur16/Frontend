@@ -1,4 +1,4 @@
-import {quizQuestions} from '../dummydata/questions'
+//import {quizQuestions} from '../dummydata/questions'
 import * as request from 'superagent'
 
 const baseUrlQuestions = 'http://localhost:4001'
@@ -20,20 +20,6 @@ export const getQuestions = (quizId) => (dispatch) => {
         payload: response.body
       }))
       .catch(err => alert(err))
-}
-
-
-export const sendResponse = (response) => (dispatch) => {
-  console.log("inside action sendresponse")
-  console.log(response)
-    request
-      .post(`${baseUrlResponses}/responses`)
-      .send(response)
-      .then(response => dispatch({
-        type: SEND_RESPONSE,
-        payload: response
-     }))
-     .catch(err => alert(err))
 }
 
 export const addAnswer = (answer) => ({
