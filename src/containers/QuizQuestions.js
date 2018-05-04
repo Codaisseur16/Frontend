@@ -58,7 +58,6 @@ class QuizQuestions extends PureComponent {
                     <FormControlLabel value='4' control={<Radio />} label={question.option4} key={`${question.id} : 4`}/>
 
                   </RadioGroup>
-
                 </FormControl>
             ))}
             </div>

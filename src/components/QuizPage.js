@@ -40,11 +40,11 @@ class QuizPage extends PureComponent {
     }
 
     render() {
-        //const {questions} = this.props
+        const {questions} = this.props
 
         return (
           <Paper className="outer-paper">
-            <h1>Quiz #1</h1>
+            <h1>Quiz #{this.props.match.params.id}</h1>
                 <QuizQuestions />
                 <Button
                     type='submit'
