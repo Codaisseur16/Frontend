@@ -1,7 +1,7 @@
 //src/containers/QuestionForm.js
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {updateQuestionCard} from '../actions/QuizzDetails'
+import {createQuestionCard} from '../actions/QuizzDetails'
 
 //styling
 import Button from 'material-ui/Button'
@@ -10,12 +10,11 @@ import Card, { CardActions, CardContent } from 'material-ui/Card'
 class QuestionForm extends PureComponent {
 
     state = {
-        quiz_id: Number((window.location.href).split('/').pop())
+        quiz: Number((window.location.href).split('/').pop())
     }
 
 	handleSubmit = (e) => {
-        e.preventDefault()
-        this.props.updateQuestionCard(this.state) 
+        this.props.createQuestionCard(this.state) 
 	}
 
 	handleChange = (event) => {
@@ -32,7 +31,7 @@ class QuestionForm extends PureComponent {
 
         return (
             
-            <Card className="quizz-card">
+            <Card id="quizz-card">
                 <CardContent>
                     <form>
 
@@ -77,7 +76,6 @@ class QuestionForm extends PureComponent {
 
                     <CardActions>
                         <Button className="question-action" onClick={this.handleSubmit}> Submit </Button>
-                        <Button className="question-action"> Remove </Button>
                     </CardActions>
                     </form>
 
@@ -88,4 +86,4 @@ class QuestionForm extends PureComponent {
     }
 }
 
-export default connect(null, {updateQuestionCard}) (QuestionForm)
+export default connect(null, {createQuestionCard}) (QuestionForm)

@@ -3,13 +3,13 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import SendQuizz from './SendQuizz'
 import QuestionForm from './QuestionForm'
-import {fetchQuestions} from '../actions/questions'
+import {getQuestions} from '../actions/questions'
 import {deleteQuestionCard} from '../actions/QuizzDetails'
 
 // Styling
 import Paper from 'material-ui/Paper'
 import Button from 'material-ui/Button'
-import Card, { CardActions, CardContent } from 'material-ui/Card'
+import Card, { CardContent } from 'material-ui/Card'
 import './QuizzDetails.css'
 import { Typography } from 'material-ui';
 
@@ -19,19 +19,23 @@ class QuizzDetails extends PureComponent {
     }
 
     componentWillMount() {
-        this.props.fetchQuestions(this.props.match.params.id)
+        this.props.getQuestions(this.props.match.params.id)
     }
 
-    delete = (question) => {
-        console.log(question.id)
-        this.props.deleteQuestionCard(question.id) //undefined
+    delete = (event ) => {
+        this.props.deleteQuestionCard(event.target.value)
     }
 
     changeState = () => {
-        this.setState({clicked: true})
+        if (this.state.clicked === true) {
+            return this.setState({clicked: false})
+        } else {
+            return this.setState({clicked: true})
+        }
     }
 
     renderQuestion = (question) => {
+        const questionId = String(question.id)
         return (
             <div>
             <Card>
@@ -44,13 +48,13 @@ class QuizzDetails extends PureComponent {
                     <Typography>Option 4: {question.option4}</Typography>
                     <br/>
                     <Typography>Correct Answer: {question.correctAnswer}</Typography>
-                    <Button
-                    variant="raised"
-                    className="delete-question"
-                    onClick={this.delete}
-                    > Delete </Button>
                 </CardContent>
             </Card>
+            <button
+            value={questionId}
+            className="delete-question"
+            onClick={this.delete.bind(this)}
+            > Delete </button>
             </div>
         )
     }
@@ -103,4 +107,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps, {fetchQuestions, deleteQuestionCard})(QuizzDetails)
+export default connect (mapStateToProps, {getQuestions, deleteQuestionCard})(QuizzDetails)
