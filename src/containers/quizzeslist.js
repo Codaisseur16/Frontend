@@ -6,13 +6,24 @@ import CreateIcon from '@material-ui/icons/Create'
 import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
+import {getUsers} from '../actions/users'
 
+const currentUser = [
+    {
+        id: 1,
+        firstName: 'Anna',
+        lastName: 'Bol',
+        email: 'anna@bol.com',
+        teacher: false
+    }
+]
 
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-          if (this.props.quizzes !== null) this.props.getQuizzes()
+          if (this.props.quizzes !== null) this.props.getQuizzes();
         }
+
     
 
 renderQuiz = (quiz) => {
@@ -23,21 +34,22 @@ renderQuiz = (quiz) => {
          title={quiz.quizTitle}/>
       </CardContent>
         <CardActions>
+        { currentUser.teacher && 
             <Button
-            size="small"
-            variant="raised"
-            onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
-            > 
-            EDIT 
-            <CreateIcon />
-            </Button>
+                size="small"
+                variant="raised"
+                onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
+                > 
+                    EDIT 
+                <CreateIcon />
+            </Button> }
             <Button
-            size="small"
-            variant="raised"
-            onClick={() => window.location.href=`/quizzes/${quiz.id}`}
-            >
-            PLAY
-             <PlayCircleOutline/>
+                size="small"
+                variant="raised"
+                onClick={() => window.location.href=`/quizzes/${quiz.id}`}
+                >
+                    PLAY
+                <PlayCircleOutline/>
             </Button>
         </CardActions>
     </Card>
@@ -45,6 +57,7 @@ renderQuiz = (quiz) => {
 
     render() {
         const {quizzes} = this.props
+        //const {currentUser} = this.props
 
         return(
             <div>
@@ -57,7 +70,8 @@ renderQuiz = (quiz) => {
 
 const mapStateToProps = function (state) {
 	return {
-		quizzes: state.quizzes,
+        quizzes: state.quizzes
+        //currentUser: state.currentUser.teacher
 	}
 }
 
