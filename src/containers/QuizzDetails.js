@@ -59,7 +59,6 @@ class QuizzDetails extends PureComponent {
         )
     }
 
-
     render () {
         const quizId = (window.location.href).split('/').pop()
         const {questions} = this.props

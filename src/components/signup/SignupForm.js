@@ -5,7 +5,7 @@ export default class SignupForm extends PureComponent {
 
 	handleSubmit = (e) => {
 		e.preventDefault()
-		// console.log(this.state)
+		// console.log(this)
 		this.props.onSubmit(this.state)
 	}
 
@@ -64,12 +64,7 @@ export default class SignupForm extends PureComponent {
 				</div>
 
 				{
-					this.state.teacher &&
-					this.state.teacher === true ?
-					<div>
-						<p>enter code</p>
-						<input type='text'/>
-					</div> : <p></p>
+					this.state.teacher 
 				}
 
 				{

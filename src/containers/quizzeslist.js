@@ -7,29 +7,16 @@ import PlayCircleOutline from '@material-ui/icons/PlayCircleOutline'
 import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
 
-// const quizzes =[
-//     {
-//     id: 1,
-//     title: 'Codaisseur: How do you like us?'
-//     },
-//     {
-//     id: 2,
-//     title: 'React/Redux: What do you know?'
-//     },
-//     {
-//     id: 3,
-//     title: 'Can you build an app with your group?'
-//     }
-// ]
-
 class QuizzesList extends PureComponent {
 
     componentWillMount() {
-          if (this.props.quizzes !== null) this.props.getQuizzes()
+          if (this.props.quizzes !== null) this.props.getQuizzes();
         }
+
     
 
 renderQuiz = (quiz) => {
+        const currentUser = this.props.currentUser
 
     return (<Card key={quiz.id} className="quiz-card">
       <CardContent>
@@ -37,21 +24,22 @@ renderQuiz = (quiz) => {
          title={quiz.quizTitle}/>
       </CardContent>
         <CardActions>
+        { currentUser.teacher && 
             <Button
-            size="small"
-            variant="raised"
-            onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
-            > 
-            EDIT 
-            <CreateIcon />
-            </Button>
+                size="small"
+                variant="raised"
+                onClick={() => window.location.href=`/quizzes/edit/${quiz.id}`}
+                > 
+                    EDIT 
+                <CreateIcon />
+            </Button> }
             <Button
-            size="small"
-            variant="raised"
-            onClick={() => window.location.href=`/quizzes/${quiz.id}`}
-            >
-            PLAY
-             <PlayCircleOutline/>
+                size="small"
+                variant="raised"
+                onClick={() => window.location.href=`/quizzes/${quiz.id}`}
+                >
+                    PLAY
+                <PlayCircleOutline/>
             </Button>
         </CardActions>
     </Card>
@@ -59,7 +47,6 @@ renderQuiz = (quiz) => {
 
     render() {
         const {quizzes} = this.props
-        console.log(quizzes)
 
         return(
             <div>
@@ -72,7 +59,8 @@ renderQuiz = (quiz) => {
 
 const mapStateToProps = function (state) {
 	return {
-		quizzes: state.quizzes,
+        quizzes: state.quizzes,
+        currentUser: state.currentUser
 	}
 }
 

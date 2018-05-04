@@ -1,18 +1,18 @@
-import {FETCH_QUESTIONS} from '../actions/questions'
-import { DELETE_QUESTION_CARD} from '../actions/QuizzDetails'
+import { GET_QUESTIONS } from '../actions/questions'
+import {DELETE_QUESTION_CARD, CREATE_QUESTION_CARD} from '../actions/QuizzDetails'
 
-export default (state = [], action) => {
-  switch (action.type) {
-        case FETCH_QUESTIONS:
-            return action.payload
+export default (state = [], {type, payload}) => {
+  switch (type) {
+        case GET_QUESTIONS:
+        return payload
+
+        case CREATE_QUESTION_CARD:
+        return state.concat(payload)
 
         case DELETE_QUESTION_CARD:
-        console.log('applied')
-            return state.filter(question => question.id === action.payload)
-              
+        return state.splice(payload.id)
 
       default:
         return state
     }
 }
- 
