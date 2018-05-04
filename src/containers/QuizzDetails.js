@@ -38,7 +38,7 @@ class QuizzDetails extends PureComponent {
         const questionId = String(question.id)
         return (
             <div>
-            <Card>
+            <Card className='rendered-question'>
                 <CardContent>
                     <Typography>Question: {question.title}</Typography>
                     <br/>
@@ -54,7 +54,7 @@ class QuizzDetails extends PureComponent {
             value={questionId}
             className="delete-question"
             onClick={this.delete.bind(this)}
-            > Delete </button>
+            > DELETE </button>
             </div>
         )
     }
@@ -66,7 +66,7 @@ class QuizzDetails extends PureComponent {
         if (this.state.clicked === false) {
             return (
                 <Paper className="paper">
-                <h1> Quiz #{quizId} </h1>
+                <Typography className="title"> Quiz #{quizId} </Typography>
                 <Button
                 variant="raised"
                 className="add-question"
