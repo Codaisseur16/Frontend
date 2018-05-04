@@ -25,28 +25,39 @@ const styles = theme => ({
   });
   
   
-
+const renderCells = (...props) => {
+<TableCell style={{width:'10px'}}  >{this.props.currentUser.userId}</TableCell>
+}
 class GetScore extends Component{
 
 componentWillMount(props) {
     this.props.getResponse(this.props.currentUser.userId)
 }
 
+// async componentDidMount(){
+//     // console.log()
+//     const scores = await this.props.getResponse(this.props.currentUser.userId)
+//     // console.log(scores)
+// }
 handleResponse=(e)=>{
     e.preventDefault()
     this.props.getResponse(this.props.currentUser.userId)
 }
 
+async getJson(json){
+    await json
+    // return JSON.stringify(json)
+    console.log('json received')
+}
+
 render() {
    
-    let scores = this.props.GetResponse
-    let score = '{"id":6,"user_id":3,"teacher":true,"quiz_id":1,"answers":null,"score":0}'
-   // score = score.slice(1,-1)
-    //const score_array  = score.split(",")
-   // const json_response =  JSON.parse(JSON.stringify({score}))
-//    let arrayofscores=score.split(",")
-    // console.log("score", arrayofscores)
-    score=JSON.parse(score)
+    // let scores = this.props.GetResponse
+   // scores="'"+scores+"'"
+    //scores=JSON.parse(scores)
+    // console.log(this)
+    // let score = '{"id":6,"user_id":6,"teacher":true,"quiz_id":1,"answers":null,"score":0}'
+    console.log(this.props)
     return (
         <div>
            <Table style={{
@@ -59,10 +70,11 @@ render() {
                </TableRow>
              </TableHead>
              <TableBody>
-                   <TableRow key={score['id']}>
-                     <TableCell style={{width:'10px'}}>{score['user_id']}</TableCell>
-                     <TableCell style={{width:'10px'}}>{score['quiz_id']}</TableCell>
-                     <TableCell style={{width:'10px'}}>{score['score']}</TableCell>
+                   <TableRow key={1}>
+                   {console.log(typeof this.props.GetResponse)}
+                     <TableCell style={{width:'10px'}}>{this.props.GetResponse.user_id}</TableCell>
+                     <TableCell style={{width:'10px'}}>{this.props.GetResponse.quiz_id}</TableCell>
+                     <TableCell style={{width:'10px'}}>{this.props.GetResponse.score}</TableCell>
                    </TableRow>
              </TableBody>
            </Table>

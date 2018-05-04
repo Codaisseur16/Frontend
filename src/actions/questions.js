@@ -49,11 +49,10 @@ export const getResponse=(user_id)=>(dispatch)=>{
   request
     .get(`${baseUrl}/responses/user/${user_id}`)
     .then(response => {
-      console.log('getallresponse', response)
-      //user_id = response.body.user_id
+    console.log('getresponse', response.body)
       dispatch({
       type: GET_RESPONSE,
-      payload: response.text
+      payload: response.body
     })
     
   }
