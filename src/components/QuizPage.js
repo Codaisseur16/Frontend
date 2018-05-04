@@ -31,8 +31,8 @@ class QuizPage extends PureComponent {
         const score = calculateScore(this.props.answers)
         const response = {
             quiz_id: Number(this.props.match.params.id),
-            user_id: this.props.currentUser.userId,
-            teacher: this.props.currentUser.teacher,
+            user_id: this.props.currentUser.received.user.user_id,
+            teacher: this.props.currentUser.received.user.teacher,
             score: score
         }
         console.log(response)
@@ -45,7 +45,7 @@ class QuizPage extends PureComponent {
 
         return (
           <Paper className="outer-paper">
-            <h1>Quiz #{this.props.match.params.id}</h1>
+            <h2>Quiz #{this.props.match.params.id} - Teacher Roast before we toast!</h2>
                 <QuizQuestions />
                 <Button
                     type='submit'
@@ -53,7 +53,7 @@ class QuizPage extends PureComponent {
                     variant="raised"
                     className="submit"
                     onClick={this.handleSubmit}
-                > <Link to='/scores'>Submit</Link>
+                > <Link to='/scores' className="Link">Submit</Link>
                 </Button>
             </Paper>
         )
