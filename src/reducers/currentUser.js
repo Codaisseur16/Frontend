@@ -5,8 +5,10 @@ let initialState = null
 
 try {
     const jwt = localStorage.getItem(localStorageJwtKey)
+    const userId = localStorage.getItem(['userId'])
+    const teacher = localStorage.getItem(['teacher'])
     if (jwt) {
-        initialState = { jwt }
+        initialState = { jwt, userId, teacher }
     }
 }
 catch (e) {
