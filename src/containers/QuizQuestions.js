@@ -1,8 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {addAnswer, updateAnswer} from '../actions/questions'
-import Paper from 'material-ui/Paper'
-import Card, {CardHeader, CardContent} from 'material-ui/Card';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import { FormLabel, FormControl, FormControlLabel} from 'material-ui/Form';
 import '../components/QuizPage.css'

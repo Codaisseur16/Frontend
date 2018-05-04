@@ -41,7 +41,7 @@ class QuizPage extends PureComponent {
     }
 
     render() {
-        const {questions} = this.props
+        // const {questions} = this.props
 
         return (
           <Paper className="outer-paper">
