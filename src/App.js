@@ -8,6 +8,7 @@ import QuizzDetails from './containers/QuizzDetails'
 import QuizPage from './components/QuizPage'
 import HomePageTeacher from './components/homepageTeacher'
 import Topbar from './components/Topbar'
+import GetScore from './components/GetScore'
 
 class App extends Component {
   render() {

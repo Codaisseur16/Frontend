@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchQuestions, sendResponse} from '../actions/questions'
 
+
 class QuizPage extends PureComponent {
     state = {
         quizId: this.props.match.params.id,
@@ -25,6 +26,8 @@ class QuizPage extends PureComponent {
         console.log('After: ', this.state)
     }
 
+   
+
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state)
@@ -36,7 +39,7 @@ class QuizPage extends PureComponent {
 
     render() {
         const {questions} = this.props
-
+        
         return (
           <div>
             <h1>Quiz #1</h1>
@@ -55,8 +58,14 @@ class QuizPage extends PureComponent {
                     </form> )
                 )}
                 <button type="submit" onClick = {this.handleSubmit} >Submit</button>
+               
+              
+               
             </div>
         )
+
+       
+        
     }
 }
 
