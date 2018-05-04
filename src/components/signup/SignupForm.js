@@ -1,5 +1,16 @@
 import React, {PureComponent} from 'react'
 
+import TextField from 'material-ui/TextField';
+import { withStyles } from 'material-ui/styles';
+import Button from 'material-ui/Button';
+import {FormGroup, FormControlLabel} from 'material-ui/Form'
+import Checkbox from 'material-ui/Checkbox'
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
+
+
+
 export default class SignupForm extends PureComponent {
 	state = {}
 
@@ -21,50 +32,97 @@ export default class SignupForm extends PureComponent {
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
-			<div>
-				<label htmlFor="firstName">First Name</label>
-				<input type="text" name="firstName" id="firstName" value={
-					this.state.firstName || ''
-				} onChange={ this.handleChange } />
-			</div>
 
 			<div>
-				<label htmlFor="lastName">Last Name</label>
-				<input type="text" name="lastName" id="lastName" value={
-					this.state.lastName || ''
-				} onChange={ this.handleChange } />
-			</div>
-
-				<div>
-					<label htmlFor="email">Email</label>
-					<input type="email" name="email" id="email" value={
-						this.state.email || ''
-					} onChange={ this.handleChange } />
+				<TextField
+					id="firstName"
+					name='firstName'
+					label="First Name"
+					type="text"
+					margin="normal"
+					onChange={ this.handleChange }
+					value={
+						this.state.firstName || ''
+					}
+					required
+				/>
 				</div>
 
 				<div>
-					<label htmlFor="password">Password</label>
-					<input type="password" name="password" id="password" value={
-						this.state.password || ''
-					} onChange={ this.handleChange } />
-				</div>
+					<TextField
+						id="lastName"
+						name='lastName'
+						label="Last Name"
+						type="text"
+						margin="normal"
+						onChange={ this.handleChange }
+						value={
+							this.state.lastName || ''
+						}
+						required
+					/>
+					</div>
+					<div>
+						<TextField
+							id="email"
+							name='email'
+							label="Email"
+							type="email"
+							margin="normal"
+							onChange={ this.handleChange }
+							value={
+								this.state.email || ''
+							}
+							required
+						/>
+						</div>
 
 				<div>
-					<label htmlFor="confirmPassword">Confirm password</label>
-					<input type="password" name="confirmPassword" id="confirmPassword" value={
-						this.state.confirmPassword || ''
-					} onChange={ this.handleChange } />
-				</div>
+					<TextField
+						id="password"
+						name='password'
+						label="Password"
+						type="password"
+						margin="normal"
+						onChange={ this.handleChange }
+						value={
+							this.state.password || ''
+						}
+						required
+					/>
+					</div>
+					<div>
+						<TextField
+							id="confirmPassword"
+							name='confirmPassword'
+							label="Confirm Password"
+							type="password"
+							margin="normal"
+							onChange={ this.handleChange }
+							value={
+								this.state.confirmPassword || ''
+							}
+							required
+						/>
+						</div>
 
-				<div>
-					<label htmlFor="teacher">Are you a teacher?</label>
-					<input type="checkbox" name="teacher" id="teacher" value={
-						this.state.teacher || ''
-					} onChange={ this.handleChange } />
-				</div>
+							<FormGroup row>
+	        <FormControlLabel
+	          control={
+	            <Checkbox
+								name='teacher'
+	              onChange={this.handleChange}
+	              value={`${this.state.teacher}` || '' }
+				  id='teacher'
+				  color='primary'
+	            />
+	          }
+	          label="Are you a teacher?"
+	        />
+	</FormGroup>
 
 				{
-					this.state.teacher 
+					this.state.teacher
 				}
 
 				{
@@ -74,7 +132,9 @@ export default class SignupForm extends PureComponent {
 					<p style={{color:'red'}}>The passwords do not match!</p>
 				}
 
-				<button type="submit">Sign up</button>
+
+				<Button variant="raised" type="submit"> Submit </Button>
+
 			</form>
 		)
 	}
