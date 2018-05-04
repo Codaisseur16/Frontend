@@ -11,7 +11,7 @@ export const FETCHED_DETAILED_QUIZ = 'FETCHED_DETAILED_QUIZ'
 export const sendQuizWHook = (webHook, quizId) => {
   console.log("Submit webhook:", webHook, quizId)
   request
-    .post(`${baseUrl}/postquizwh`)
+    .patch(`${baseUrl}/postquizwh`)
     .send({url: `${baseUrl}/${webHook}`, qid: quizId} )
     .then(result => console.log("This webhook has been saved:",webHook))
     .catch(err => console.error(err))

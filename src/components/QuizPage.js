@@ -31,8 +31,8 @@ class QuizPage extends PureComponent {
         const score = calculateScore(this.props.answers)
         const response = {
             quiz_id: Number(this.props.match.params.id),
-            user_id: this.props.currentUser.received.user.user_id,
-            teacher: this.props.currentUser.received.user.teacher,
+            user_id: this.props.currentUser.userId,
+            teacher: this.props.currentUser.teacher,
             score: score
         }
         console.log(response)
