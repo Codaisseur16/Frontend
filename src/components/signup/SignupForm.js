@@ -1,15 +1,8 @@
 import React, {PureComponent} from 'react'
-
-import TextField from 'material-ui/TextField';
-import { withStyles } from 'material-ui/styles';
+import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button';
 import {FormGroup, FormControlLabel} from 'material-ui/Form'
 import Checkbox from 'material-ui/Checkbox'
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-
-
-
 
 export default class SignupForm extends PureComponent {
 	state = {}

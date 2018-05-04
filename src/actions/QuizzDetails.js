@@ -1,7 +1,5 @@
 //src/actions/QuizzDetails.js
 import * as request from 'superagent'
-import {logout} from './users'
-import {isExpired} from '../jwt'
 
 const baseUrl = 'http://localhost:4001'
 
