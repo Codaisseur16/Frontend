@@ -6,6 +6,7 @@ import {createQuestionCard} from '../actions/QuizzDetails'
 //styling
 import Button from 'material-ui/Button'
 import Card, { CardActions, CardContent } from 'material-ui/Card'
+import './QuestionForm.css'
 
 class QuestionForm extends PureComponent {
 
@@ -31,9 +32,9 @@ class QuestionForm extends PureComponent {
 
         return (
             
-            <Card id="quizz-card">
+            <Card className="quizy-card">
                 <CardContent>
-                    <form>
+                    <form className="question-form">
 
                         <div className="question-field">
                             <label className="label-field">QUESTION: </label>
@@ -66,7 +67,7 @@ class QuestionForm extends PureComponent {
                         </div>
 
                         <div className="correct-field">
-                            <label className="label-field">CORRECT: </label>
+                            <label className="label-field">CORRECT: </label> <br/>
                             <input type="text" className="input-field" placeholder='Enter the option number'
                             name="correctAnswer" id="correctAnswer"
                             value={this.state.correctAnswer || initialValues.correctAnswer || ''} 
@@ -75,7 +76,9 @@ class QuestionForm extends PureComponent {
                         </div>
 
                     <CardActions>
-                        <Button className="question-action" onClick={this.handleSubmit}> Submit </Button>
+                        <Button className="question-action" onClick={this.handleSubmit} 
+                        style={{ textAlign: '' }}
+                        > Submit </Button>
                     </CardActions>
                     </form>
 
