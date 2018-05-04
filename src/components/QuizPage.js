@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {getQuestions, sendResponse} from '../actions/questions'
+import {Link} from 'react-router-dom'
 import Paper from 'material-ui/Paper'
 import Button from 'material-ui/Button'
 import QuizQuestions from '../containers/QuizQuestions'
@@ -52,7 +53,7 @@ class QuizPage extends PureComponent {
                     variant="raised"
                     className="submit"
                     onClick={this.handleSubmit}
-                > Submit
+                > <Link to='/scores'>Submit</Link>
                 </Button>
             </Paper>
         )
