@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {fetchQuestions, sendResponse} from '../actions/questions'
+import {getQuestions, sendResponse} from '../actions/questions'
 import {Link} from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ class QuizPage extends PureComponent {
     }
 
     componentWillMount() {
-    this.props.fetchQuestions(this.props.match.params.id)
+    this.props.getQuestions(this.props.match.params.id)
     }
 
     sendResponse = (response) => {
@@ -77,4 +77,4 @@ const mapStateToProps = (state) => ({
       currentUser: state.currentUser
     })
 
-    export default connect(mapStateToProps, {fetchQuestions, sendResponse})(QuizPage)
+    export default connect(mapStateToProps, {getQuestions, sendResponse})(QuizPage)

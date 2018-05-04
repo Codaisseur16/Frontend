@@ -5,22 +5,22 @@ import TextField from 'material-ui/TextField'
 import {createQuiz} from '../actions/quizzes'
 import store from '../store'
 import './createQuizButton.js'
-//import { userId } from '../jwt';
+
 
 class CreateQuizButton extends PureComponent {
     state = {}
 
     handleSubmit = (e) => {
         e.preventDefault()
-        //console.log(this.state);
         store.dispatch(createQuiz(this.state))   
     }
 
 
     handleChange = () => event => {
+        const currentUser = this.props.currentUser
         this.setState({
           quizTitle: event.target.value,
-          userId: 1
+          userId: currentUser.userId
         });
       };
 
@@ -51,7 +51,8 @@ class CreateQuizButton extends PureComponent {
 
 const mapStateToProps = function (state) {
 	return {
-		quizzes: state.quizzes,
+        quizzes: state.quizzes,
+        currentUser: state.currentUser
 	}
 }
 
