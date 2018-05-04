@@ -9,12 +9,12 @@ import {Link} from 'react-router-dom'
 class GetScore extends Component{
 
 componentWillMount(props) {
-    this.props.getResponse(this.props.currentUser.userId)
+    this.props.getResponse(3)
 }
 
 handleResponse=(e)=>{
     e.preventDefault()
-    this.props.getResponse(this.props.currentUser.userId)
+    this.props.getResponse(3)
 }
 
 async getJson(json){

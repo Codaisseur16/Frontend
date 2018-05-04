@@ -41,7 +41,7 @@ export const updateAnswer = (answer) => ({
        .send(response)
        .then(response => dispatch({
          type: SEND_RESPONSE,
-         payload: response.req._data
+         payload: response
       }))
       .catch(err => alert(err))
 }
