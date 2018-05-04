@@ -1,12 +1,16 @@
-import {GET_QUESTIONS} from '../actions/questions'
-import {quizQuestions} from '../dummydata/questions'
+import { GET_QUESTIONS } from '../actions/questions'
+import {DELETE_QUESTION_CARD, CREATE_QUESTION_CARD} from '../actions/QuizzDetails'
 
-const initialstate = quizQuestions.data
-
-export default (state = initialstate, {type, payload}) => {
+export default (state = [], {type, payload}) => {
   switch (type) {
-      case GET_QUESTIONS:
-            return payload
+        case GET_QUESTIONS:
+        return payload
+
+        case CREATE_QUESTION_CARD:
+        return state.concat(payload)
+
+        case DELETE_QUESTION_CARD:
+        return state.splice(payload.id)
 
       default:
         return state
