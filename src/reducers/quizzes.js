@@ -1,13 +1,13 @@
-import {ADD_QUIZ} from '../actions/quizzes'
+import {ADD_QUIZ, GET_QUIZZES} from '../actions/quizzes'
 
 
-export default (state = null, {type, payload}) => {
+export default (state = [], {type, payload}) => {
   switch (type) {
+    case GET_QUIZZES:
+      return payload
+        
     case ADD_QUIZ:
-      return {
-        ...state,
-        [payload.id]: payload
-      } 
+      return [...state, payload]
       default:
       return state
      }  

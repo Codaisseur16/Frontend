@@ -7,11 +7,14 @@ import {withRouter} from 'react-router'
 import {userId} from '../jwt'
 import {connect} from 'react-redux'
 
+
 const TopBar = (props) => {
   const { location, history, user } = props
 
   return (
-    <AppBar position="absolute" style={{zIndex:10}}>
+    <AppBar position="absolute" style={{
+        zIndex:10,
+        backgroundColor: '#F50057'}}>
       <Toolbar>
         <Typography variant="title" color="inherit" style={{flex: 1}}>
           Test Your Knowledge
