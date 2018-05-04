@@ -2,8 +2,13 @@
     margin: 40px auto;
     width: 80%;
 }
+.paper .title {
+    padding: 20px;
+    font-size: 34px;
+    font-weight: bold;
+}
 .paper .add-question {
-    margin: 12px;
+    margin: 20px;
     background-color: #F50057;
     color: white
 }
@@ -33,3 +38,18 @@
     color: white; 
     margin: 10px auto;
 }
+.rendered-question {
+    margin: 10px 25px;
+}
+
+.delete-question {
+    padding: 10px;
+    font-weight: 500;
+    margin: 0 0 20px 25px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: 0.5px solid rgb(170, 170, 170);
+}
+.delete-question:hover {
+    background-color:  rgb(244, 235, 235);
+} 

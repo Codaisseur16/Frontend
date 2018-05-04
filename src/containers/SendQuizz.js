@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import Button from 'material-ui/Button'
 import {sendQuizWHook} from '../actions/quizzes'
+import './SendQuizz.css'
 
 class SendQuizz extends PureComponent {
   constructor(props, state) {
@@ -27,9 +28,9 @@ class SendQuizz extends PureComponent {
 
     render () {
         return (
-            <div>
+            <div className='webhook'>
                 <input type="text" placeholder="Type your webhook URL"name="correctAnswer" className="input-field"
-                  value={this.state.webHook} onChange={ this.handleChange }/>
+                  value={this.state.webHook} onChange={ this.handleChange } className="webhook-field"/>
                 <Button className="send-quizz-content"> Send onClick={this.handleSubmit}</Button>
             </div>
         )
