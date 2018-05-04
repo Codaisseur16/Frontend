@@ -1,6 +1,6 @@
 // add simple actions here that don't use endpoints and backend stu
 import * as request from 'superagent'
-// import {baseUrl} from '../constants'
+//import {baseUrl} from '../constants'
 import {isExpired} from '../jwt'
 
 const baseUrl = 'http://localhost:4000'
