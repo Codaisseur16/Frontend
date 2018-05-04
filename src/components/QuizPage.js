@@ -5,8 +5,8 @@ import {fetchQuestions, sendResponse} from '../actions/questions'
 
 class QuizPage extends PureComponent {
     state = {
-        quizId: this.props.match.params.id,
-        userId: this.props.currentUser.userId,
+        quiz_id: this.props.match.params.id,
+        user_id: this.props.currentUser.userId,
         teacher: this.props.currentUser.teacher,
         score: 0
     }

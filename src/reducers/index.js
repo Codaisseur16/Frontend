@@ -6,9 +6,8 @@ import signup from './signup'
 import questions from './questions'
 import QuizzDetails from './QuizzDetails'
 import score from './score'
-import GetResponse from './GetResponse'
 import quizzes from './quizzes'
-
+import GetResponse from './GetResponse'
 
 export default {
   users,

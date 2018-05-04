@@ -27,7 +27,6 @@ export const login = (email, password) => (dispatch) =>
 		.post(`${authorizationUrl}/logins`)
     .send({email, password})
     .then(result => {
-			console.log(result.body)
       dispatch({
         type: USER_LOGIN_SUCCESS,
         payload: result.body
