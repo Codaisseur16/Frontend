@@ -1,0 +1,17 @@
+.outer-paper {
+    margin: auto;
+    margin-top: 20px;
+    padding: 20px;
+    width: 60%;
+    font-family: 'Roboto';
+  }
+
+.submit {
+      margin: 12px;
+      background-color: #F50057;
+      color: white
+  }
+
+ {
+    font-family: 'Roboto'
+}
