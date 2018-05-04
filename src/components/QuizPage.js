@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {fetchQuestions, sendResponse} from '../actions/questions'
+import {Link} from 'react-router-dom'
 
 
 class QuizPage extends PureComponent {
@@ -59,7 +60,7 @@ class QuizPage extends PureComponent {
                 )}
                 <button type="submit" onClick = {this.handleSubmit} >Submit</button>
                
-              
+                <Link to='/scores'><button type="submit" >Get Score</button></Link>
                
             </div>
         )
