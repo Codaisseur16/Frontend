@@ -29,7 +29,11 @@ export const login = (email, password) => (dispatch) =>
     .then(result => {
       dispatch({
         type: USER_LOGIN_SUCCESS,
-        payload: result.body
+				payload: {
+					jwt: result.body.jwt,
+					userId: result.body.received.user.id,
+					teacher: result.body.received.user.teacher
+				}
       })
     })
     .catch(err => {
