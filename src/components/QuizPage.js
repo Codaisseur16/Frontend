@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
-import {getQuestions, sendResponse, addAnswer, updateAnswer} from '../actions/questions'
+import {getQuestions, sendResponse} from '../actions/questions'
+import {Link} from 'react-router-dom'
 import Paper from 'material-ui/Paper'
 import Card, {CardHeader, CardContent} from 'material-ui/Card';
 import Radio, { RadioGroup } from 'material-ui/Radio';
@@ -69,4 +70,5 @@ const mapStateToProps = (state) => ({
       answers: state.answers
     })
 
-    export default connect(mapStateToProps, {getQuestions, sendResponse, addAnswer, updateAnswer})(QuizPage)
+export default connect(mapStateToProps, {getQuestions, sendResponse})(QuizPage)
+

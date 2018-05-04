@@ -8,15 +8,15 @@ import './quizzeslist.css'
 import {getQuizzes} from '../actions/quizzes'
 import {getUsers} from '../actions/users'
 
-const currentUser = [
-    {
-        id: 1,
-        firstName: 'Anna',
-        lastName: 'Bol',
-        email: 'anna@bol.com',
-        teacher: false
-    }
-]
+// const currentUser = [
+//     {
+//         id: 1,
+//         firstName: 'Anna',
+//         lastName: 'Bol',
+//         email: 'anna@bol.com',
+//         teacher: false
+//     }
+// ]
 
 class QuizzesList extends PureComponent {
 
@@ -27,6 +27,7 @@ class QuizzesList extends PureComponent {
     
 
 renderQuiz = (quiz) => {
+        const currentUser = this.props.currentUser
 
     return (<Card key={quiz.id} className="quiz-card">
       <CardContent>
@@ -57,7 +58,6 @@ renderQuiz = (quiz) => {
 
     render() {
         const {quizzes} = this.props
-        //const {currentUser} = this.props
 
         return(
             <div>
@@ -70,8 +70,8 @@ renderQuiz = (quiz) => {
 
 const mapStateToProps = function (state) {
 	return {
-        quizzes: state.quizzes
-        //currentUser: state.currentUser.teacher
+        quizzes: state.quizzes,
+        currentUser: state.currentUser
 	}
 }
 

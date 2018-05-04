@@ -22,20 +22,6 @@ export const getQuestions = (quizId) => (dispatch) => {
       .catch(err => alert(err))
 }
 
-
-export const sendResponse = (response) => (dispatch) => {
-  console.log("inside action sendresponse")
-  console.log(response)
-    request
-      .post(`${baseUrlResponses}/responses`)
-      .send(response)
-      .then(response => dispatch({
-        type: SEND_RESPONSE,
-        payload: response
-     }))
-     .catch(err => alert(err))
-}
-
 export const addAnswer = (answer) => ({
   type: ADD_ANSWER,
   payload: answer

@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react'
 import {connect} from 'react-redux'
 import SendQuizz from './SendQuizz'
 import QuestionForm from './QuestionForm'
-import {fetchQuestions} from '../actions/questions'
+import {getQuestions} from '../actions/questions'
 
 // Styling
 import Paper from 'material-ui/Paper'
@@ -19,7 +19,7 @@ class QuizzDetails extends PureComponent {
 
     componentWillMount() {
         // const quizId = (window.location.href).split('/').pop()
-        this.props.fetchQuestions(1)
+        this.props.getQuestions(1)
     }
 
     renderCard = () => {
@@ -86,4 +86,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect (mapStateToProps, {fetchQuestions})(QuizzDetails)
+export default connect (mapStateToProps, {getQuestions})(QuizzDetails)

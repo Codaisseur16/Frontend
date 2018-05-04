@@ -5,21 +5,21 @@ import QuizzesList from '../containers/quizzeslist'
 import Paper from 'material-ui/Paper'
 import './homepageTeacher.css'
 
-const currentUser = [
-    {
-        id: 1,
-        firstName: 'Anna',
-        lastName: 'Bol',
-        email: 'anna@bol.com',
-        teacher: false
-    }
-]
+// const currentUser = [
+//     {
+//         id: 1,
+//         firstName: 'Anna',
+//         lastName: 'Bol',
+//         email: 'anna@bol.com',
+//         teacher: false
+//     }
+// ]
 
 class HomePageTeacher extends PureComponent {
 
 
     render() {
-        //const {currentUser} = this.props
+        const {currentUser} = this.props
 
         return(
             <Paper className="outer-paper">
@@ -33,7 +33,7 @@ class HomePageTeacher extends PureComponent {
 
 const mapStateToProps = function (state) {
     return {
-      //currentUser: state.currentUser.teacher
+      currentUser: state.currentUser
     }
   }
 
